@@ -17,12 +17,12 @@ class MyPresentStaking extends Component {
                     <div className="col-xl-4"></div>
                     <div className="col-xl-4" style={colStyle}>
 
-                        <div className="col-xl-12" style={{ marginTop: "-18px", marginLeft: "-5px", backgroundImage: "linear-gradient(to right, #474708, blue)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "24px" }}>
+                        <div className="col-xl-12" style={{ marginTop: "-18px", marginLeft: "-5px", backgroundImage: "linear-gradient(to right, #474708, blue)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "19px" }}>
                             Your Current Staking Bonus</div>
                         <br />
 
 
-                        <div style={{ color: "white", fontSize: "44px", fontFamily: "MyFont", textAlign: "center" }}> {this.props.totalRate} % Daily</div>
+                        <div style={{ color: "white", fontSize: "29px", fontFamily: "MyFont", textAlign: "center" }}> {this.props.totalRate} % Daily</div>
                         <br />
 
 

@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-// const contract_address = 'TMmUbaev1WMQxBTChYqMhKaySpyCzkRu5g';
+// const contract_address = 'TSEM235dPYrE6YC8ova1zCQcDFCV8uaMbH';
 
 // let contracturl = "https://tronscan.org/#/contract/" + contract_address;
 
@@ -31,27 +31,27 @@ class MyStakingInfo extends Component {
                     <div className="col-xl-3"></div>
                     <div className="col-xl-6" style={colStyle}>
 
-                        <div className="col-xl-6" style={{ marginTop: "-18px", backgroundImage: "linear-gradient(to right, black, #8D183B)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "24px" }}>
+                        <div className="col-xl-6" style={{ marginTop: "-18px", backgroundImage: "linear-gradient(to right, black, #8D183B)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "19px" }}>
                             My Staking Stats</div>
 
                         <br />
 
                         <div className="col-xl-12" >
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Base Staking </p>
-                            <p style={{ color: "white", fontSize: "20px", float: "right" }}> +1.00 %</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Base Staking </p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> +1.00 %</p>
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Contract Bonus </p>
-                            <p style={{ color: "white", fontSize: "20px", float: "right" }}>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Contract Bonus </p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}>
                                 +{this.props.contract_bonus} %</p>
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Personal Hold Bonus </p>
-                            <p style={{ color: "white", fontSize: "20px", float: "right" }}>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Personal Hold Bonus </p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}>
                                 +{this.props.hold_bonus} %</p>
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>  Daily Staking Bonus</p><p style={{ color: "white", fontSize: "20px", float: "right" }}> +{this.props.totalRate} %</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>  Daily Staking Bonus</p><p style={{ color: "white", fontSize: "17px", float: "right" }}> +{this.props.totalRate} %</p>
                             <br /><br />
                         </div>
                     </div>

@@ -56,12 +56,12 @@ class MyPresentStaking extends Component {
                     <div className="col-xl-4"></div>
                     <div className="col-xl-4" style={colStyle}>
 
-                        <div className="col-xl-12" style={{ marginTop: "-18px", marginLeft: "-5px", backgroundColor: "black", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "24px" }}>
+                        <div className="col-xl-12" style={{ marginTop: "-18px", marginLeft: "-5px", backgroundColor: "black", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "19px" }}>
                             Withdrawable Balance</div>
                         <br />
 
 
-                        <div style={{ color: "white", fontSize: "44px", fontFamily: "MyFont", textAlign: "center" }}> {this.props.avlBalance} TRX</div>
+                        <div style={{ color: "white", fontSize: "29px", fontFamily: "MyFont", textAlign: "center" }}> {this.props.avlBalance} TRX</div>
 
 
                         <form

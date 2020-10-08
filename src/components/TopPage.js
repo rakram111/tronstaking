@@ -20,7 +20,7 @@ import "./css/style.css";
 
 let url = "https://tronstaking.cc/";
 // '
-let contract_address = 'TMmUbaev1WMQxBTChYqMhKaySpyCzkRu5g';
+let contract_address = 'TSEM235dPYrE6YC8ova1zCQcDFCV8uaMbH';
 
 // let tronContracturl = "https://tronscan.org/#/contract/" + contract_address;
 // let tronAddressurl = "https://tronscan.org/#/address/";
@@ -188,7 +188,6 @@ class TopPage extends Component {
         this.setState({ teambiz: Number(userInfo.teambiz) / sunny });
         this.setState({ checkpoint: Number(userInfo.checkpoint) });
         this.setState({ now: Number(userInfo.timenow) });
-        this.setState({ lucky_bonus: Number(userInfo.lucky_bonus) / sunny });
 
         const CONTRACT_BALANCE_STEP = await Utils.contract.CONTRACT_BALANCE_STEP().call();
         this.setState({ contract_step: Number(CONTRACT_BALANCE_STEP) / sunny });
@@ -226,6 +225,9 @@ class TopPage extends Component {
 
         const userTotalWithdrawn = await Utils.contract.getUserTotalWithdrawn(this.state.account).call();
         this.setState({ userTotalWithdrawn: Number(userTotalWithdrawn) / sunny });
+        const lucky_bonus = await Utils.contract.getUserLuckyBonus(this.state.account).call();
+        this.setState({ lucky_bonus: Number(lucky_bonus) / sunny });
+
 
         const dividends_withdrawn = Number(this.state.userTotalWithdrawn + this.state.bonus_rem
             - this.state.ref_bonus).toFixed(5);

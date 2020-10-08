@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 
-// const contract_address = 'TMmUbaev1WMQxBTChYqMhKaySpyCzkRu5g';
+// const contract_address = 'TSEM235dPYrE6YC8ova1zCQcDFCV8uaMbH';
 
 // let contracturl = "https://tronscan.org/#/contract/"  contract_address;
 
@@ -31,36 +31,36 @@ export class SmartInfo extends Component {
                     <div className="col-xl-3"></div>
                     <div className="col-xl-6" style={colStyle}>
 
-                        <div className="col-xl-6" style={{ marginTop: "-18px", backgroundImage: "linear-gradient(to right, black, #8D183B)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "24px" }}>
+                        <div className="col-xl-6" style={{ marginTop: "-18px", backgroundImage: "linear-gradient(to right, black, #8D183B)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "19px" }}>
                             My Organization</div>
 
                         <br />
 
                         <div className="col-xl-12" >
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Total Deposits</p>
-                            <p style={{ color: "white", fontSize: "20px", float: "right" }}> {this.props.userTotalDeposit} TRX</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Deposits</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.userTotalDeposit} TRX</p>
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Referral Bonus Earned</p>
-                            <p style={{ color: "white", fontSize: "20px", float: "right" }}> {this.props.ref_bonus} TRX</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Referral Bonus Earned</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.ref_bonus} TRX</p>
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Lucky Bonus Earned</p>
-                            <p style={{ color: "white", fontSize: "20px", float: "right" }}> {this.props.lucky_bonus} TRX</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Lucky Bonus Earned</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.lucky_bonus} TRX</p>
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Dividends Withdrawn </p>
-                            <p style={{ color: "white", fontSize: "20px", float: "right" }}>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Dividends Withdrawn </p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}>
                                 {this.props.dividends} TRX</p>
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Total Earned</p>
-                            <p style={{ color: "white", fontSize: "20px", float: "right" }}>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Earned</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}>
                                 {this.props.userTotalWithdrawn + this.props.avlBalance + this.props.lucky_bonus} TRX</p>
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>  Total Withdrawn</p><p style={{ color: "white", fontSize: "20px", float: "right" }}> {this.props.userTotalWithdrawn} TRX</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>  Total Withdrawn</p><p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.userTotalWithdrawn} TRX</p>
                             <br /><br />
 
 

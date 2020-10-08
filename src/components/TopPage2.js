@@ -13,7 +13,7 @@ import "./css/style.css";
 
 let url = "https://tronstaking.cc/";
 // '
-let contract_address = 'TMmUbaev1WMQxBTChYqMhKaySpyCzkRu5g';
+let contract_address = 'TSEM235dPYrE6YC8ova1zCQcDFCV8uaMbH';
 
 toast.configure();
 
@@ -133,7 +133,6 @@ class TopPage2 extends Component {
         this.setState({ balance: ballTemp });
         this.setState({ balanceload: false });
 
-        // // console.log("refid " + this.state.refid);
         const contractBalance = await Utils.contract.getContractBalance().call();
         this.setState({ contractBalance: contractBalance / sunny });
 
@@ -157,6 +156,11 @@ class TopPage2 extends Component {
         let subContract = contractStr.substring(0, 8);
         this.setState({ subContract });
 
+        // console.log('sub contract ' + this.state.subContract)
+        // console.log(' contract ' + contractStr)
+        // // console.log('show acc str ' + showacc);
+
+
         /////////////////////////////////////////////////////////////////////////////
         const userInfo = await Utils.contract.userInfo(this.state.account).call();
         // console.log(userInfo);
@@ -170,7 +174,6 @@ class TopPage2 extends Component {
         this.setState({ teambiz: Number(userInfo.teambiz) / sunny });
         this.setState({ checkpoint: Number(userInfo.checkpoint) });
         this.setState({ now: Number(userInfo.timenow) });
-        this.setState({ lucky_bonus: Number(userInfo.lucky_bonus) / sunny });
 
         const CONTRACT_BALANCE_STEP = await Utils.contract.CONTRACT_BALANCE_STEP().call();
         this.setState({ contract_step: Number(CONTRACT_BALANCE_STEP) / sunny });
@@ -208,10 +211,17 @@ class TopPage2 extends Component {
 
         const userTotalWithdrawn = await Utils.contract.getUserTotalWithdrawn(this.state.account).call();
         this.setState({ userTotalWithdrawn: Number(userTotalWithdrawn) / sunny });
+        const lucky_bonus = await Utils.contract.getUserLuckyBonus(this.state.account).call();
+        this.setState({ lucky_bonus: Number(lucky_bonus) / sunny });
+
 
         const dividends_withdrawn = Number(this.state.userTotalWithdrawn + this.state.bonus_rem
             - this.state.ref_bonus).toFixed(5);
         this.setState({ dividends_withdrawn });
+        // console.log('contract - ' + this.state.upline);
+        // console.log('account - ' + this.state.account);
+        // console.log('owner - ' + this.state.owner);
+        // console.log('link refid - ' + this.state.refid);
 
     }
 

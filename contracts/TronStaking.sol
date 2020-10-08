@@ -6,7 +6,7 @@
  *   │   Website: https://tronstaking.cc                                     │
  *   │                                                                       │  
  *   │   Telegram Live Support: https://t.me/tronstakingsupport              |
- *   │   Telegram Public Channel: https://t.me/tronstakingofficial             |
+ *   │   Telegram Public Channel: https://t.me/tronstakingofficial           |
  *   |                                                                       |
  *   └───────────────────────────────────────────────────────────────────────┘ 
  *
@@ -34,9 +34,9 @@
  *
  *   [FUNDS DISTRIBUTION]
  *
- *   - 80% Platform main balance, participants payouts
+ *   - 85% Platform main balance, participants payouts
  *   - 6% Advertising and promotion expenses
- *   - 7% Affiliate program bonuses
+ *   - 2% Lucky Bonus
  *   - 7% Support work, technical functioning, administration fee
  *
  *   ────────────────────────────────────────────────────────────────────────
@@ -49,7 +49,7 @@ pragma solidity 0.5.4;
 contract TronStaking {
 	using SafeMath for uint256;
 
-	uint256 constant public INVEST_MIN_AMOUNT = 10 trx; // 50 trx
+	uint256 public INVEST_MIN_AMOUNT = 10 trx; // 50 trx
 	uint256 constant public BASE_PERCENT = 100; // 1% daily
 	uint256[] public REFERRAL_PERCENTS = [700];
 	uint256 public MARKETING_FEE = 1300;
@@ -282,9 +282,9 @@ contract TronStaking {
 
 		uint256 totalRate = getContractPlusBaseRate();
 		if (isActive(userAddress)) {
-			uint256 timeMultiplier = (now.sub(user.checkpoint)).div(TIME_STEP).mul(10);
+			uint256 timeMultiplier = (now.sub(user.checkpoint)).div(TIME_STEP).mul(5);
 			if(timeMultiplier >= 100){
-				timeMultiplier = 100; // 1% max hold bonus
+				timeMultiplier = 100; // 1% max hold bonus for 20 days
 			}
 			return totalRate.add(timeMultiplier);
 		} else {
@@ -299,7 +299,7 @@ contract TronStaking {
  		 uint256 ref_bonus, 
  		 uint256 teambiz, 
  		 uint256 id ,
- 		 uint256 timenow
+ 		 uint256 timenow  
 		 ) {
 
         return (
@@ -309,7 +309,7 @@ contract TronStaking {
 			 users[userAddress].refbonus,
 			 users[userAddress].teambiz,
 			 users[userAddress].id,
-        	 block.timestamp);
+        	 block.timestamp );
     }
  
 	function getUserAvailableBalance(address userAddress) public view returns(uint256) {
@@ -381,10 +381,19 @@ contract TronStaking {
 		luck.lucktype = _lucktype;
 	}
 
+	function changeMinimumDeposit(uint256 _newValue) public {
+		require(msg.sender == owner, "Authorization failed"); 
+		INVEST_MIN_AMOUNT = _newValue*1000000;
+	}
+ 
 	function getLuckyUser(uint256 _index) external view returns (address userAddress, uint256 value, uint256 lucktype, uint256 timestamp){
 		return (lucky_users[_index].userAddress, lucky_users[_index].value, lucky_users[_index].lucktype, lucky_users[_index].time);
 	}
 
+	function getUserLuckyBonus(address _addr ) public view returns (uint256){
+		return users[_addr].lucky_bonus;
+	}  
+ 
 	function getAdmin( ) public view returns (address){
 		return owner;
 	} 

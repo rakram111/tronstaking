@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 
 import loader from "./img/loadicon1.gif"
 
-const contract_address = 'TMmUbaev1WMQxBTChYqMhKaySpyCzkRu5g';
+const contract_address = 'TSEM235dPYrE6YC8ova1zCQcDFCV8uaMbH';
 
 
 let contracturl = "https://tronscan.org/#/contract/" + contract_address;
@@ -74,30 +74,30 @@ export class SmartInfo extends Component {
                     <div className="col-xl-3"></div>
                     <div className="col-xl-6" style={colStyle}>
 
-                        <div className="col-xl-6" style={{ marginTop: "-18px", backgroundImage: "linear-gradient(to right, black, #8D183B)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "24px" }}>
+                        <div className="col-xl-6" style={{ marginTop: "-18px", backgroundImage: "linear-gradient(to right, black, #8D183B)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "19px" }}>
                             Smart Contract</div>
 
                         <br />
 
                         <div className="col-xl-12" style={{ textAlign: "center" }}>
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Contract Address </p><p style={{ color: "white", fontSize: "20px", float: "right" }}>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Contract Address </p><p style={{ color: "white", fontSize: "17px", float: "right" }}>
                                 {this.props.smartLoading ? <img src={loader} alt="loading..." width="30px" style={{ paddingLeft: "10px" }} /> :
                                     <a href={contracturl} style={{ textDecoration: "underline", color: "white" }} target="_blank" rel="noopener noreferrer">{this.props.subContract}...</a>}
 
 
                             </p><br /><br />
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Total Deposits </p>
-                            <p style={{ color: "white", fontSize: "20px", float: "right" }}> {this.props.totalInvested} TRX</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Deposits </p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.totalInvested} TRX</p>
 
                             <br /><br />
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}> Contract Balance </p><p style={{ color: "white", fontSize: "20px", float: "right" }}> {this.props.contractBalance} TRX</p><br /><br />
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}> Contract Balance </p><p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.contractBalance} TRX</p><br /><br />
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Total Withdrawn </p><p style={{ color: "white", fontSize: "20px", float: "right" }}> {this.props.totalWithdrawn} TRX</p><br /><br />
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Withdrawn </p><p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.totalWithdrawn} TRX</p><br /><br />
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Total Users </p><p style={{ color: "white", fontSize: "20px", float: "right" }}> # {this.props.totalUsers} </p><br /><br />
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Users </p><p style={{ color: "white", fontSize: "17px", float: "right" }}> # {this.props.totalUsers} </p><br /><br />
 
-                            <p style={{ color: "white", fontSize: "20px", float: "left" }}>Total Deposits </p><p style={{ color: "white", fontSize: "20px", float: "right" }}> # {this.props.totalDepositCount}</p><br /><br />
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Deposits </p><p style={{ color: "white", fontSize: "17px", float: "right" }}> # {this.props.totalDepositCount}</p><br /><br />
                         </div>
                     </div>
                     <div className="col-xl-3"></div>
