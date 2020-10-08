@@ -217,7 +217,7 @@ class TopPage extends Component {
         const totalRate = await Utils.contract.getTotalRate(this.state.account).call();
         this.setState({ totalRate: (Number(totalRate) / 100).toFixed(2) });
 
-        const hold_bonus = Number(this.state.totalRate - 1 - this.state.contract_bonus).toFixed(1);
+        const hold_bonus = Number(this.state.totalRate - 1 - this.state.contract_bonus).toFixed(2);
         this.setState({ hold_bonus });
 
         const userDepositCount = await Utils.contract.getUserDepositCount(this.state.account).call();
@@ -287,6 +287,9 @@ class TopPage extends Component {
                 <div style={backStyle}>
                     <div style={{ textAlign: "center", paddingTop: "40px" }}>
                         <a href={url} >  <img src={require("./Image1/logo.png")} alt="Logo" width="600px" /></a>
+                    </div>
+                    <div style={{ paddingBottom: "60px" }}>
+
                     </div>
                     <div className="row">
                         <div className="col-md-4">

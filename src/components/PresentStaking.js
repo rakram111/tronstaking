@@ -21,10 +21,8 @@ class PresentStaking extends Component {
                             Current Staking Bonus</div>
                         <br />
 
-
                         <div style={{ color: "white", fontSize: "29px", fontFamily: "MyFont", textAlign: "center" }}> {this.props.dailyRate} % Daily</div>
                         <br />
-
 
                     </div>
                     <div className="col-xl-4"></div>
