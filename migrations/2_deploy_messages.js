@@ -4,6 +4,6 @@ var TronStaking = artifacts.require("./TronStaking.sol");
 
 module.exports = function (deployer) {
   // deployer.deploy(TRXMessages);
-  deployer.deploy(TronStaking, "TQ9nCgHVgki3KjXUnC5Vdm3bcuNTQ4EVMY", "TMKKWtwErWh5EKNuLLVbSwGq8aKuTz4uUA");
+  deployer.deploy(TronStaking, "TCFcvCxB1QWitMQjHqabQfipXT8FbAbSQV", "TJ9SH61YEPmtsdSLvCv5QzJUp6NFfcyfQX");
   //deployer.deploy(TrxChain);
 };
