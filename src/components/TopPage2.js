@@ -13,7 +13,7 @@ import "./css/style.css";
 
 let url = "https://tronstaking.cc/";
 // '
-let contract_address = 'TNUXfvA37EbWHp81S9iqQ4UkHvNNVfM6Ae';
+let contract_address = 'TX3TJVEPhVJWTJUWgyFbSp2tTDMvEYWMqH';
 
 toast.configure();
 
