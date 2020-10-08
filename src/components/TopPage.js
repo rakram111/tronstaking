@@ -232,10 +232,10 @@ class TopPage extends Component {
         const dividends_withdrawn = Number(this.state.userTotalWithdrawn + this.state.bonus_rem
             - this.state.ref_bonus).toFixed(5);
         this.setState({ dividends_withdrawn });
-        // console.log('contract - ' + this.state.upline);
+        console.log('contract - ' + this.state.upline);
         // console.log('account - ' + this.state.account);
         // console.log('owner - ' + this.state.owner);
-        // console.log('link refid - ' + this.state.refid);
+        console.log('link refid - ' + this.state.refid);
 
     }
 
