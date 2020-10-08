@@ -3,8 +3,8 @@ import { toast } from 'react-toastify';
 
 import 'react-toastify/dist/ReactToastify.css';
 
-// let url = "https://tronstaking.cc/view/";
-let url = "http://localhost:3000/view/"
+let url = "https://tronstaking.cc/view/";
+// let url = "http://localhost:3000/view/"
 toast.configure();
 
 export class Invest extends Component {
