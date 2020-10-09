@@ -78,7 +78,7 @@ export class Invest extends Component {
 
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Deposits </p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Stake </p>
                             <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.userTotalDeposit} TRX</p>
                             <br /><br />
 

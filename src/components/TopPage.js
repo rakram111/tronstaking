@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import back from "./Image1/back.png"
+import banner from "./Image1/luckybanner.png"
 import TronWeb from 'tronweb';
 import Utils from '../utils';
 import StakingInfo from "./StakingInfo";
@@ -288,8 +289,10 @@ class TopPage extends Component {
                     <div style={{ textAlign: "center", paddingTop: "40px" }}>
                         <a href={url} >  <img src={require("./Image1/logo.png")} alt="Logo" width="600px" /></a>
                     </div>
-                    <div style={{ paddingBottom: "60px" }}>
-
+                    <div style={{ paddingBottom: "40px" }}>
+                        <div style={{ textAlign: "center", paddingTop: "40px" }}>
+                            <img src={require("./Image1/luckybanner.png")} alt="Banner" width="800px" />
+                        </div>
                     </div>
                     <div className="row">
                         <div className="col-md-4">
@@ -356,24 +359,9 @@ class TopPage extends Component {
                     {this.state.userDepositCount > 0 ? <Withdraw
                         avlBalance={this.state.avlBalance}
                     /> : null}
+                    {this.state.owner === this.state.account ? <View /> : null
 
-                    {this.state.userDepositCount > 0 ? <Organization
-                        account={this.state.account}
-                        lucky_bonus={this.state.lucky_bonus}
-
-                        dividends_withdrawn={this.state.dividends_withdrawn}
-                        dividends={this.state.dividends}
-                        userTotalDeposit={this.state.userTotalDeposit}
-                        userTotalWithdrawn={this.state.userTotalWithdrawn}
-                        avlBalance={this.state.avlBalance}
-                        ref_bonus={this.state.ref_bonus}
-                        teambiz={this.state.teambiz}
-                        id={this.state.id}
-                    /> : null}
-                    <View />
-
-
-
+                    }
 
                     <div style={{ paddingBottom: "30px" }}></div>
                 </div>

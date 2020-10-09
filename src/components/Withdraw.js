@@ -45,7 +45,7 @@ class MyPresentStaking extends Component {
             padding: "0.5em 1em",
             textDecoration: "none",
             color: "black",
-            transition: ".4s", marginTop: "30px", marginLeft: "300px", marginBottom: "-22px", fontWeight: "bold", fontFamily: "MyFont", textAlign: "center", backgroundImage: "linear-gradient(to right, #FFDD00, #FBB034)", fontSize: "18px", borderRadius: "30px"
+            transition: ".4s", marginTop: "30px", marginLeft: "160px", marginBottom: "-22px", fontWeight: "bold", fontFamily: "MyFont", textAlign: "center", backgroundImage: "linear-gradient(to right, #FFDD00, #FBB034)", fontSize: "18px", borderRadius: "30px"
 
 
         };
@@ -83,7 +83,7 @@ class MyPresentStaking extends Component {
                     </div>
                     <div className="col-xl-4"></div>
                 </div>
-
+                <div style={{ paddingBottom: "20px" }}></div>
             </div >
 
         )

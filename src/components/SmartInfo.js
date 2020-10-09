@@ -87,17 +87,10 @@ export class SmartInfo extends Component {
 
                             </p><br /><br />
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Deposits </p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Stake </p>
                             <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.totalInvested} TRX</p>
 
                             <br /><br />
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}> Contract Balance </p><p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.contractBalance} TRX</p><br /><br />
-
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Withdrawn </p><p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.totalWithdrawn} TRX</p><br /><br />
-
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Users </p><p style={{ color: "white", fontSize: "17px", float: "right" }}> # {this.props.totalUsers} </p><br /><br />
-
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Deposits </p><p style={{ color: "white", fontSize: "17px", float: "right" }}> # {this.props.totalDepositCount}</p><br /><br />
                         </div>
                     </div>
                     <div className="col-xl-3"></div>

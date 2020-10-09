@@ -51,8 +51,6 @@ class MyStakingInfo extends Component {
                                 +{this.props.hold_bonus} %</p>
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>  Daily Staking Bonus</p><p style={{ color: "white", fontSize: "17px", float: "right" }}> +{this.props.totalRate} %</p>
-                            <br /><br />
                         </div>
                     </div>
                     <div className="col-xl-3"></div>

@@ -7,7 +7,7 @@ class PresentStaking extends Component {
 
         const colStyle = {
             backgroundImage: "radial-gradient(red, black, red)", opacity: "70%", marginTop: "20px", borderRadius: "20px", marginLeft: "20px", marginRight: "20px",
-            boxShadow: "0 0 20px #eee"
+            boxShadow: "0 0 20px #eee",
         };
 
         return (
@@ -17,7 +17,7 @@ class PresentStaking extends Component {
                     <div className="col-xl-4"></div>
                     <div className="col-xl-4" style={colStyle}>
 
-                        <div className="col-xl-12" style={{ marginTop: "-18px", marginLeft: "-5px", backgroundImage: "linear-gradient(to right, #474708, blue)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "19px" }}>
+                        <div className="col-xl-12" style={{ marginTop: "-18px", marginLeft: "-5px", backgroundImage: "linear-gradient(to right, #474708, blue)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "19px", }}>
                             Current Staking Bonus</div>
                         <br />
 

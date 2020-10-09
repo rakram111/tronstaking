@@ -38,7 +38,7 @@ export class SmartInfo extends Component {
 
                         <div className="col-xl-12" >
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Deposits</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Stake</p>
                             <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.userTotalDeposit} TRX</p>
                             <br /><br />
 

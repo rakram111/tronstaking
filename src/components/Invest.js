@@ -81,7 +81,7 @@ export class Invest extends Component {
     render() {
 
         const colStyle = {
-            backgroundImage: "linear-gradient(to right, black, #474708)", opacity: "70%", marginTop: "20px", borderRadius: "20px", marginLeft: "20px", marginRight: "20px",
+            opacity: "70%", marginTop: "20px", borderRadius: "20px", marginLeft: "20px", marginRight: "20px",
             boxShadow: "0 0 20px #eee",
         };
 
@@ -98,18 +98,8 @@ export class Invest extends Component {
             display: "inline - block",
             padding: "0.5em 1em",
             textDecoration: "none",
-            color: "black",
-            transition: ".4s", marginTop: "30px", marginLeft: "10px", marginBottom: "-22px", fontWeight: "bold", fontFamily: "MyFont", textAlign: "right", backgroundImage: "linear-gradient(to right, #FFDD00, #FBB034)", fontSize: "18px", borderRadius: "30px"
-
-
-        };
-
-        const resetButton = {
-            display: "inline - block",
-            padding: "0.5em 1em",
-            textDecoration: "none",
-            color: "#FFF",
-            transition: ".4s", marginTop: "10px", marginLeft: "10px", marginBottom: "10px", fontWeight: "3px", border: "3px solid white", backgroundColor: "red", fontSize: "18px",
+            color: "white",
+            transition: ".4s", marginTop: "30px", marginLeft: "10px", marginBottom: "-22px", fontWeight: "bold", fontFamily: "MyFont", textAlign: "right", backgroundColor: "red", fontSize: "18px", borderRadius: "30px", opacity: "75%"
 
 
         };
@@ -120,8 +110,8 @@ export class Invest extends Component {
                     <div className="col-xl-3"></div>
                     <div className="col-xl-6" style={colStyle}>
 
-                        <div className="col-xl-6" style={{ marginTop: "-18px", backgroundImage: "linear-gradient(to right, #474708, blue)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "19px" }}>
-                            Invest Section</div>
+                        <div style={{ marginTop: "-18px", backgroundImage: "linear-gradient(to right, #474708, blue)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "19px", }}>
+                            Staking Section</div>
 
                         <br />
                         <div className="col-xl-12" style={{ textAlign: "center" }}>
@@ -157,7 +147,7 @@ export class Invest extends Component {
                                 <a href="#q" className="btn btn-primary" style={addButton} onClick={this.button50k}>+50 k</a>
                                 <a href="#q" className="btn btn-primary" style={addButton} onClick={this.button100k}>+100 k</a>
                                 <a href="#q" className="btn btn-primary" style={addButton} onClick={this.button500k}>+500 k</a>
-                                <a href="#q" className="btn btn-primary" style={resetButton} onClick={this.reset}>Reset</a><br />
+                                <a href="#q" className="btn btn-primary" style={addButton} onClick={this.reset}>Reset</a><br />
 
 
                                 {this.props.refLoading ? null :

@@ -70,12 +70,12 @@ class Invest extends Component {
 
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Deposits </p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Stake </p>
                             <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.userTotalDeposit} TRX</p>
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Staking Rate </p>
-                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.totalRate} %</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Lucky Bonus</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.lucky_bonus} TRX</p>
                             <br /><br />
 
 
