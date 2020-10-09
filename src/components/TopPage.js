@@ -13,6 +13,7 @@ import MyStakingInfo from "./MyStakingInfo";
 import ReferralLink from "./ReferralLink";
 import View from "./View";
 import Withdraw from "./Withdraw";
+import About from "./About";
 
 import 'react-toastify/dist/ReactToastify.css';
 import "./css/style.css";
@@ -272,6 +273,7 @@ class TopPage extends Component {
     }
 
     render() {
+
         const backStyle = {
             backgroundImage: `url(${back})`, backgroundAttachment: "fixed", fontFamily: "MyFont"
             , height: "auto", width: "100%", margin: "0", backgroundPosition: "center", overflow: "hidden", marginTop: "-30px"
@@ -280,8 +282,11 @@ class TopPage extends Component {
 
         return (
             <div>
-                <div>
-                    <p></p>
+                <div style={{ backgroundColor: "black", textAlign: "center" }}>
+                    <br />
+                    <h4 style={{ color: "white" }}>System Language <img src={require("./Image1/english.jpg")} alt="Flag" width="40px" /> English</h4>
+                    <br />
+                    <br />
                 </div>
                 <div style={backStyle}>
                     <div style={{ textAlign: "center", paddingTop: "40px" }}>
@@ -360,11 +365,12 @@ class TopPage extends Component {
                     {this.state.owner === this.state.account
                         ? <View />
                         : null
-
                     }
 
-                    <div style={{ paddingBottom: "30px" }}></div>
+                    <div style={{ paddingBottom: "100px" }}></div>
                 </div>
+                <About />
+
             </div >
         );
     }
