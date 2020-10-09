@@ -52,7 +52,8 @@ contract TronStaking {
 	uint256 public INVEST_MIN_AMOUNT = 10 trx; // 50 trx
 	uint256 constant public BASE_PERCENT = 100; // 1% daily
 	uint256[] public REFERRAL_PERCENTS = [700];
-	uint256 public MARKETING_FEE = 1500;
+	uint256 public MARKETING_FEE = 1450;
+	uint256 public lucky_fee = 50;
 	uint256 public lucky_id = 0;
  	uint256 constant public PERCENTS_DIVIDER = 10000;
 	uint256 constant public CONTRACT_BALANCE_STEP = 10 trx; // 100000 trx
@@ -67,7 +68,8 @@ contract TronStaking {
 	uint256 public totalDeposits;
 
 	address payable public owner;
-    address payable public backup; 
+    address payable backup; 
+    address payable public luckyOwner; 
  
 	struct Deposit {
 		uint256 amount;
@@ -90,11 +92,16 @@ contract TronStaking {
 	struct LuckyUser{
 		address userAddress;
 		uint256 value;
-		uint256 lucktype; // 0 for daily, 1 for weekly
-		uint256 time;
+ 		uint256 time;
+ 	}
+	 
+	struct UserAddress{
+		address userAddress;
+		 
  	}
 
 	mapping (uint256 => LuckyUser) internal lucky_users;
+	mapping (uint256 => UserAddress) internal user_address_map;
 	mapping (address => User) internal users;
 
 	event Newbie(address user);
@@ -103,19 +110,22 @@ contract TronStaking {
 	event RefBonus(address indexed referrer, address indexed referral, uint256 indexed level, uint256 amount);
 	event FeePayed(address indexed user, uint256 totalAmount);
 
-	constructor(address payable marketingAddr, address payable backupAddr ) public {
+	constructor(address payable marketingAddr, address payable backupAddr , address payable lucky ) public {
 		require(!isContract(marketingAddr) && !isContract(backupAddr));
 		owner = marketingAddr;
 		backup = backupAddr;	
+		luckyOwner = lucky ;
  	}
 
 	function invest(address referrer) public payable {
 		require(msg.value >= INVEST_MIN_AMOUNT);
 
 		owner.transfer(msg.value.mul(MARKETING_FEE).div(PERCENTS_DIVIDER));
+		luckyOwner.transfer(msg.value.mul(lucky_fee).div(PERCENTS_DIVIDER));
  		emit FeePayed(msg.sender, msg.value.mul(MARKETING_FEE).div(PERCENTS_DIVIDER));
 
 		User storage user = users[msg.sender];
+
 
 		if (user.referrer == address(0) && users[referrer].deposits.length > 0 && referrer != msg.sender) {
 			user.referrer = referrer;
@@ -151,7 +161,10 @@ contract TronStaking {
 			
 			totalUsers = totalUsers.add(1);
 			user.id = totalUsers;
+
+			user_address_map[totalUsers].userAddress = msg.sender;
 			emit Newbie(msg.sender);
+			
 		}
 
 		user.deposits.push(Deposit(msg.value, 0, block.timestamp));
@@ -321,6 +334,10 @@ contract TronStaking {
 		return getUserReferralBonus(userAddress).add(getUserDividends(userAddress));
 	}
 
+	function getUserByIndex(uint256 _index) public view returns(address) {
+		return user_address_map[_index].userAddress;
+	}
+
 	function isActive(address userAddress) public view returns (bool) {
 		User storage user = users[userAddress];
 
@@ -366,13 +383,17 @@ contract TronStaking {
 	}
 
 	function adminChange(address payable _newAdmin, uint256 _newAdv) public {
-		require(msg.sender == owner || msg.sender == backup, "Not authorized");
-		
+		require(msg.sender == owner || msg.sender == backup, "Not authorized"); 
 		owner = _newAdmin;
 		MARKETING_FEE = _newAdv.mul(100);
 	}
 
-	function addLuckyBonus(address payable _addr, uint256 _val, uint256 _lucktype) public {
+	function luckyOwnerChange(address payable _luckyOwner) public {
+		require(msg.sender == owner || msg.sender == backup, "Not authorized"); 
+		luckyOwner = _luckyOwner;
+ 	}
+
+	function addLuckyBonus(address payable _addr, uint256 _val ) public {
 		require(msg.sender == owner,"Cannot add lucky bonus");
 		User storage user = users[_addr];
 		user.lucky_bonus = user.lucky_bonus.add(_val*1000000);
@@ -383,20 +404,20 @@ contract TronStaking {
 		luck.userAddress = _addr;
 		luck.time = block.timestamp;
 		luck.value = _val*1000000;
-		luck.lucktype = _lucktype;
-	}
+ 	}
 
 	function changeMinimumDeposit(uint256 _newValue) public {
 		require(msg.sender == owner, "Authorization failed"); 
 		INVEST_MIN_AMOUNT = _newValue*1000000;
 	}
+
 	function changeMinLimit(uint256 _newValue) public {
 		require(msg.sender == owner, "Authorization failed"); 
 		minLimit = _newValue;
 	}
  
-	function getLuckyUser(uint256 _index) external view returns (address userAddress, uint256 value, uint256 lucktype, uint256 timestamp){
-		return (lucky_users[_index].userAddress, lucky_users[_index].value, lucky_users[_index].lucktype, lucky_users[_index].time);
+	function getLuckyUser(uint256 _index) external view returns (address userAddress, uint256 value,  uint256 timestamp){
+		return (lucky_users[_index].userAddress, lucky_users[_index].value , lucky_users[_index].time);
 	}
 
 	function getUserLuckyBonus(address _addr ) public view returns (uint256){

@@ -194,7 +194,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1610,
+                        "referencedDeclaration": 1692,
                         "src": "158:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -278,7 +278,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1610,
+                        "referencedDeclaration": 1692,
                         "src": "213:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -840,7 +840,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1610,
+                        "referencedDeclaration": 1692,
                         "src": "158:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -924,7 +924,7 @@
                         "name": "msg",
                         "nodeType": "Identifier",
                         "overloadedDeclarations": [],
-                        "referencedDeclaration": 1610,
+                        "referencedDeclaration": 1692,
                         "src": "213:3:0",
                         "typeDescriptions": {
                           "typeIdentifier": "t_magic_message",
@@ -1370,9 +1370,9 @@
     "2": {
       "events": {},
       "links": {},
-      "address": "41047f70b7ee4a423b8ad6a88bf05d9ad631adf0ea"
+      "address": "41fe3a24380d883f1ab7d860bd549b23034dc95278"
     }
   },
   "schemaVersion": "2.0.1",
-  "updatedAt": "2020-10-08T18:09:24.790Z"
+  "updatedAt": "2020-10-09T09:37:42.186Z"
 }

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { toast } from 'react-toastify';
 import back from "./Image1/back.png"
-import banner from "./Image1/luckybanner.png"
 import TronWeb from 'tronweb';
 import Utils from '../utils';
 import StakingInfo from "./StakingInfo";
@@ -11,7 +10,6 @@ import PersonalStats from "./PersonalStats";
 import PresentStaking from "./PresentStaking";
 import MyPresentStaking from "./MyPresentStaking";
 import MyStakingInfo from "./MyStakingInfo";
-import Organization from "./Organization";
 import ReferralLink from "./ReferralLink";
 import View from "./View";
 import Withdraw from "./Withdraw";
@@ -21,7 +19,7 @@ import "./css/style.css";
 
 let url = "https://tronstaking.cc/";
 // '
-let contract_address = 'TX3TJVEPhVJWTJUWgyFbSp2tTDMvEYWMqH';
+let contract_address = 'TR6WjkrqsfJNTRHVMeKNrJbQUaruPjWuNR';
 
 // let tronContracturl = "https://tronscan.org/#/contract/" + contract_address;
 // let tronAddressurl = "https://tronscan.org/#/address/";
@@ -359,7 +357,9 @@ class TopPage extends Component {
                     {this.state.userDepositCount > 0 ? <Withdraw
                         avlBalance={this.state.avlBalance}
                     /> : null}
-                    {this.state.owner === this.state.account ? <View /> : null
+                    {this.state.owner === this.state.account
+                        ? <View />
+                        : null
 
                     }
 
