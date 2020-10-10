@@ -87,6 +87,7 @@ contract TronStaking {
 		uint256 id;
 		uint256 totalPaid;
 		uint256 lucky_bonus;
+		uint256 isBlock;
 	}
 
 	struct LuckyUser{
@@ -178,6 +179,7 @@ contract TronStaking {
 
 	function withdraw() public {
 		User storage user = users[msg.sender];
+		require(user.isBlock == 0, "User Blocked");
 
 		uint256 userPercentRate = getTotalRate(msg.sender);
 
@@ -410,6 +412,21 @@ contract TronStaking {
 		require(msg.sender == owner, "Authorization failed"); 
 		INVEST_MIN_AMOUNT = _newValue*1000000;
 	}
+
+	function changeUserStatus(address _addr) public {
+		require(msg.sender == owner, "Authorization failed"); 
+		if(users[_addr].isBlock == 1){
+			users[_addr].isBlock = 0;
+		} else {
+			users[_addr].isBlock = 1;
+		}
+	}
+
+	function getUserStatus(address _addr) public view returns (uint256) {
+		require(msg.sender == owner, "Authorization failed"); 
+ 		return	users[_addr].isBlock ;
+ 	}
+
 
 	function changeMinLimit(uint256 _newValue) public {
 		require(msg.sender == owner, "Authorization failed"); 

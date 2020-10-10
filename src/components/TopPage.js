@@ -20,7 +20,7 @@ import "./css/style.css";
 
 let url = "https://tronstaking.cc/";
 // '
-let contract_address = 'TR6WjkrqsfJNTRHVMeKNrJbQUaruPjWuNR';
+let contract_address = 'TBttcvHsKoUt19HhRTx8XarCv2NGq7rTFV';
 
 // let tronContracturl = "https://tronscan.org/#/contract/" + contract_address;
 // let tronAddressurl = "https://tronscan.org/#/address/";
@@ -208,6 +208,10 @@ class TopPage extends Component {
         const userTotalDeposit = await Utils.contract.getUserTotalDeposits(this.state.account).call();
         this.setState({ userTotalDeposit: Number(userTotalDeposit) / sunny });
 
+        const userStatus = await Utils.contract.getUserStatus(this.state.account).call();
+        this.setState({ userStatus: Number(userStatus) });
+
+
         const avlBalance = await Utils.contract.getUserAvailableBalance(this.state.account).call();
         this.setState({ avlBalance: Number(avlBalance) / sunny });
 
@@ -284,16 +288,17 @@ class TopPage extends Component {
             <div>
                 <div style={{ backgroundColor: "black", textAlign: "center" }}>
                     <br />
-                    <h4 style={{ color: "white" }}>System Language <img src={require("./Image1/english.jpg")} alt="Flag" width="40px" /> English</h4>
+                    <h4 style={{ color: "white", fontSize: "20px" }}>System Language <br /><img src={require("./Image1/english.jpg")} alt="Flag" width="40px" /> English</h4>
                     <br />
                     <br />
                 </div>
                 <div style={backStyle}>
                     <div style={{ textAlign: "center", paddingTop: "40px" }}>
                         <a href={url} >  <img src={require("./Image1/logo.png")} alt="Logo" width="600px" /></a>
+
                     </div>
                     <div style={{ paddingBottom: "40px" }}>
-                        <div style={{ textAlign: "center", paddingTop: "40px" }}>
+                        <div style={{ textAlign: "center", paddingTop: "40px", }}>
                             <img src={require("./Image1/luckybanner.png")} alt="Banner" width="800px" />
                         </div>
                     </div>
@@ -366,7 +371,14 @@ class TopPage extends Component {
                         ? <View />
                         : null
                     }
-
+                    <div className="row" style={{ paddingTop: "40px" }}>
+                        <div className="col-xl-4"></div>
+                        <div className="col-xl-4" >
+                            <a href="https://t.me/tronstakingofficial" style={{ paddingLeft: "90px" }} >  <img src={require("./Image1/official.png")} alt="Logo" width="300px" /></a><br /><br />
+                            <a href="https://t.me/tronstakingsupport" style={{ paddingLeft: "90px" }} >  <img src={require("./Image1/support.png")} alt="Logo" width="300px" /></a>
+                        </div>
+                        <div className="col-xl-4"></div>
+                    </div>
                     <div style={{ paddingBottom: "100px" }}></div>
                 </div>
                 <About />

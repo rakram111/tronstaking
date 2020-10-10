@@ -99,7 +99,7 @@ export class Invest extends Component {
             padding: "0.5em 1em",
             textDecoration: "none",
             color: "white",
-            transition: ".4s", marginTop: "30px", marginLeft: "10px", marginBottom: "-22px", fontWeight: "bold", fontFamily: "MyFont", textAlign: "right", backgroundColor: "red", fontSize: "18px", borderRadius: "30px", opacity: "75%"
+            transition: ".4s", marginTop: "30px", marginLeft: "10px", marginBottom: "-22px", fontWeight: "bold", fontFamily: "MyFont", textAlign: "right", backgroundColor: "red", fontSize: "18px", borderRadius: "30px", opacity: "80%"
 
 
         };
