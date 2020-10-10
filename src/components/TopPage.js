@@ -20,13 +20,12 @@ import "./css/style.css";
 
 let url = "https://tronstaking.cc/";
 // '
-let contract_address = 'TBttcvHsKoUt19HhRTx8XarCv2NGq7rTFV';
+let contract_address = 'TGADvag1FLFHp7xrwM4UX8QwZYWLroDZ96';
 
 // let tronContracturl = "https://tronscan.org/#/contract/" + contract_address;
 // let tronAddressurl = "https://tronscan.org/#/address/";
 
 toast.configure();
-
 
 class TopPage extends Component {
 
@@ -201,16 +200,18 @@ class TopPage extends Component {
 
         // console.log(hold_bonus)
 
-        const contract_bonus = Math.floor((this.state.contractBalance / this.state.contract_step)) / 100;
+        var contract_bonus = (Math.floor((this.state.contractBalance / this.state.contract_step)) / 100).toFixed(2);
+        if (contract_bonus >= 3) {
+            contract_bonus = 3;
+        }
         //    const contract_bonus = Number(contract_bonus1 / 100).toFixed(2);
-        this.setState({ contract_bonus });
+        this.setState({ contract_bonus: Number(contract_bonus).toFixed(2) });
 
         const userTotalDeposit = await Utils.contract.getUserTotalDeposits(this.state.account).call();
         this.setState({ userTotalDeposit: Number(userTotalDeposit) / sunny });
 
         const userStatus = await Utils.contract.getUserStatus(this.state.account).call();
         this.setState({ userStatus: Number(userStatus) });
-
 
         const avlBalance = await Utils.contract.getUserAvailableBalance(this.state.account).call();
         this.setState({ avlBalance: Number(avlBalance) / sunny });
@@ -221,12 +222,14 @@ class TopPage extends Component {
         const totalRate = await Utils.contract.getTotalRate(this.state.account).call();
         this.setState({ totalRate: (Number(totalRate) / 100).toFixed(2) });
 
-        const hold_bonus = Number(this.state.totalRate - 1 - this.state.contract_bonus).toFixed(2);
+        var hold_bonus = Number(this.state.totalRate - 1 - this.state.contract_bonus).toFixed(2);
+
         this.setState({ hold_bonus });
+
 
         const userDepositCount = await Utils.contract.getUserDepositCount(this.state.account).call();
         this.setState({ userDepositCount: Number(userDepositCount) });
-
+        console.log('user deposit ' + this.state.userDepositCount)
         const userTotalWithdrawn = await Utils.contract.getUserTotalWithdrawn(this.state.account).call();
         this.setState({ userTotalWithdrawn: Number(userTotalWithdrawn) / sunny });
         const lucky_bonus = await Utils.contract.getUserLuckyBonus(this.state.account).call();
@@ -288,7 +291,9 @@ class TopPage extends Component {
             <div>
                 <div style={{ backgroundColor: "black", textAlign: "center" }}>
                     <br />
-                    <h4 style={{ color: "white", fontSize: "20px" }}>System Language <br /><img src={require("./Image1/english.jpg")} alt="Flag" width="40px" /> English</h4>
+
+                    <h4 style={{ color: "white", fontSize: "15px" }}>System Language <br /><br /><img src={require("./Image1/english.jpg")} alt="Flag" width="30px" /> English</h4>
+
                     <br />
                     <br />
                 </div>
@@ -338,20 +343,20 @@ class TopPage extends Component {
                         totalDepositCount={this.state.totalDepositCount}
                         totalUsers={this.state.totalUsers}
                     />
-                    {this.state.userDepositCount > 0 ? <MyPresentStaking
+                    {this.state.userTotalDeposit > 0 ? <MyPresentStaking
                         totalRate={this.state.totalRate}
                     /> : null}
 
-                    {this.state.userDepositCount > 0 ? <ReferralLink
+                    {this.state.userTotalDeposit > 0 ? <ReferralLink
                         account={this.state.account}
                     /> : null}
-                    {this.state.userDepositCount > 0 ? <MyStakingInfo
+                    {this.state.userTotalDeposit > 0 ? <MyStakingInfo
                         contract_bonus={this.state.contract_bonus}
                         hold_bonus={this.state.hold_bonus}
                         totalRate={this.state.totalRate}
 
                     /> : null}
-                    {this.state.userDepositCount > 0 ? <PersonalStats
+                    {this.state.userTotalDeposit > 0 ? <PersonalStats
                         account={this.state.account}
                         subAccount={this.state.subAccount}
                         upline={this.state.upline}
@@ -364,7 +369,7 @@ class TopPage extends Component {
                         lucky_bonus={this.state.lucky_bonus}
                     /> : null}
 
-                    {this.state.userDepositCount > 0 ? <Withdraw
+                    {this.state.userTotalDeposit > 0 ? <Withdraw
                         avlBalance={this.state.avlBalance}
                     /> : null}
                     {this.state.owner === this.state.account
@@ -372,14 +377,15 @@ class TopPage extends Component {
                         : null
                     }
                     <div className="row" style={{ paddingTop: "40px" }}>
-                        <div className="col-xl-4"></div>
-                        <div className="col-xl-4" >
-                            <a href="https://t.me/tronstakingofficial" style={{ paddingLeft: "90px" }} >  <img src={require("./Image1/official.png")} alt="Logo" width="300px" /></a><br /><br />
-                            <a href="https://t.me/tronstakingsupport" style={{ paddingLeft: "90px" }} >  <img src={require("./Image1/support.png")} alt="Logo" width="300px" /></a>
+                        <div className="col-xl-2"></div>
+                        <div className="col-xl-8" >
+                            <a href="https://t.me/tronstakingofficial" style={{ paddingLeft: "210px", marginTop: "50px" }} >  <img src={require("./Image1/official.png")} alt="Logo" width="200px" /></a>
+                            <a href="https://t.me/tronstakingsupport" style={{ paddingLeft: "210px", marginTop: "50px" }} > <img src={require("./Image1/support.png")} alt="Logo" width="200px" /></a>
+
                         </div>
-                        <div className="col-xl-4"></div>
+                        <div className="col-xl-2"></div>
                     </div>
-                    <div style={{ paddingBottom: "100px" }}></div>
+                    <div style={{ paddingBottom: "50px" }}></div>
                 </div>
                 <About />
 

