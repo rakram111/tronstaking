@@ -307,16 +307,7 @@ class TopPage extends Component {
                             <img src={require("./Image1/luckybanner.png")} alt="Banner" width="800px" />
                         </div>
                     </div>
-                    <div className="row">
-                        <div className="col-md-4">
 
-                        </div>
-
-                        <div className="col-md-4">
-
-                        </div>
-
-                    </div>
                     <PresentStaking
                         dailyRate={this.state.dailyRate}
                     />
@@ -379,8 +370,8 @@ class TopPage extends Component {
                     <div className="row" style={{ paddingTop: "40px" }}>
                         <div className="col-xl-2"></div>
                         <div className="col-xl-8" >
-                            <a href="https://t.me/tronstakingofficial" style={{ paddingLeft: "210px", marginTop: "50px" }} >  <img src={require("./Image1/official.png")} alt="Logo" width="200px" /></a>
-                            <a href="https://t.me/tronstakingsupport" style={{ paddingLeft: "210px", marginTop: "50px" }} > <img src={require("./Image1/support.png")} alt="Logo" width="200px" /></a>
+                            <a href="https://t.me/tronstakingofficial" style={{ paddingLeft: "190px", marginTop: "50px" }} >  <img src={require("./Image1/official.png")} alt="Logo" width="200px" /></a>
+                            <a href="https://t.me/tronstakingsupport" style={{ paddingLeft: "190px", marginTop: "50px" }} > <img src={require("./Image1/support.png")} alt="Logo" width="200px" /></a>
 
                         </div>
                         <div className="col-xl-2"></div>

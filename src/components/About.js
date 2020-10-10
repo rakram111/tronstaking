@@ -67,11 +67,11 @@ class About extends Component {
                         <div className="col-xl-5" style={{
                             paddingTop: "22px", paddingLeft: "30px"
                         }} >
-                            <h5 style={{ paddingTop: "12px", color: "white", paddingLeft: "22px", fontFamily: "MyFont" }}>
+                            <h5 style={{ paddingTop: "32px", color: "white", paddingLeft: "22px", fontFamily: "MyFont" }}>
                                 <span style={{ color: "orange" }}>Tron Staking</span>  Passive Bonus
                             </h5>
                             <br />
-                            <h5 style={{ paddingTop: "20px", color: "white", paddingLeft: "12px" }}>
+                            <h5 style={{ paddingTop: "10px", color: "white", paddingLeft: "12px" }}>
                                 <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> Base Staking Bonus <span style={{ color: "yellow" }}>  +1.00 %</span>
                                 <br />
                                 <br />
@@ -85,7 +85,7 @@ class About extends Component {
                         <div className="col-xl-5" style={{
                             paddingTop: "22px", paddingLeft: "30px"
                         }} >
-                            <h5 style={{ paddingTop: "12px", color: "white", paddingLeft: "22px", fontFamily: "MyFont" }}>
+                            <h5 style={{ paddingTop: "32px", color: "white", paddingLeft: "22px", fontFamily: "MyFont" }}>
                                 <span style={{ color: "orange" }}>Tron Staking</span>  Active Bonus
                             </h5>
                             <br />
