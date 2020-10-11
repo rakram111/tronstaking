@@ -292,7 +292,7 @@ class TopPage extends Component {
             <div>
                 <div style={{ backgroundColor: "black", textAlign: "center" }}>
                     <br />
-                    <h4 style={{ color: "white", fontSize: "15px" }}>Select Language {/* <img src={require("./Image1/english.jpg")} alt="Flag" width="30px" /> */}
+                    <h4 style={{ color: "white", fontSize: "15px" }}>Choose Language {/* <img src={require("./Image1/english.jpg")} alt="Flag" width="30px" /> */}
                     </h4>
 
                     <div id="google_translate_element">
