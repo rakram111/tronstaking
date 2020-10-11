@@ -292,7 +292,7 @@ class TopPage extends Component {
                 <div style={{ backgroundColor: "black", textAlign: "center" }}>
                     <br />
 
-                    <h4 style={{ color: "white", fontSize: "15px" }}>System Language <br /><br /><img src={require("./Image1/english.jpg")} alt="Flag" width="30px" /> English</h4>
+                    <h4 style={{ color: "white", fontSize: "15px" }}>System's Language <br /><br /><img src={require("./Image1/english.jpg")} alt="Flag" width="30px" /> English</h4>
 
                     <br />
                     <br />
