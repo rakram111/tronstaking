@@ -44,7 +44,6 @@ export class Invest extends Component {
 
                         <h2 style={h2Style}>Enter View Mode</h2>
 
-
                         <div className="col-xl-12" style={{ textAlign: "center" }}>
                             <form
                                 onSubmit={(event) => {

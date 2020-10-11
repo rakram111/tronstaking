@@ -4,6 +4,7 @@ import back from "./Image1/back.png"
 import TronWeb from 'tronweb';
 import Utils from '../utils';
 import StakingInfo from "./StakingInfo";
+import Banner from "./Banner";
 import Invest from "./Invest";
 import SmartInfo from "./SmartInfo";
 import PersonalStats from "./PersonalStats";
@@ -291,10 +292,12 @@ class TopPage extends Component {
             <div>
                 <div style={{ backgroundColor: "black", textAlign: "center" }}>
                     <br />
+                    <h4 style={{ color: "white", fontSize: "15px" }}>Select Language {/* <img src={require("./Image1/english.jpg")} alt="Flag" width="30px" /> */}
+                    </h4>
 
-                    <h4 style={{ color: "white", fontSize: "15px" }}>System Language <br /><br /><img src={require("./Image1/english.jpg")} alt="Flag" width="30px" /> English</h4>
+                    <div id="google_translate_element">
 
-                    <br />
+                    </div>
                     <br />
                 </div>
                 <div style={backStyle}>
@@ -302,11 +305,8 @@ class TopPage extends Component {
                         <a href={url} >  <img src={require("./Image1/logo.png")} alt="Logo" width="600px" /></a>
 
                     </div>
-                    <div style={{ paddingBottom: "40px" }}>
-                        <div style={{ textAlign: "center", paddingTop: "40px", }}>
-                            <img src={require("./Image1/luckybanner.png")} alt="Banner" width="800px" />
-                        </div>
-                    </div>
+
+                    <Banner />
 
                     <PresentStaking
                         dailyRate={this.state.dailyRate}

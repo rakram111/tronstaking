@@ -4,7 +4,9 @@
   font-family: 'MyFont';
   src: local('MyFont'), url(./Steelr.ttf) format('truetype');
 }
-
+ .goog-te-gadget {
+        font-size: 19px !important;
+    }  
 .pricingTable{
     background: #fff;
     font-family: 'Montserrat', sans-serif;

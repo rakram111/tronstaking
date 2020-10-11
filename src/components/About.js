@@ -8,6 +8,9 @@ class About extends Component {
         const pageBack = {
             backgroundImage: `url(${about})`, position: "relative", height: "100%", width: "100%", overflow: "hidden"
         };
+        const colStyle = {
+            color: "yellow"
+        };
         const layer = {
             backgroundColor: "black",
             opacity: "80%",
@@ -72,12 +75,15 @@ class About extends Component {
                             </h5>
                             <br />
                             <h5 style={{ paddingTop: "10px", color: "white", paddingLeft: "12px" }}>
-                                <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> Base Staking Bonus <span style={{ color: "yellow" }}>  +1.00 %</span>
+                                <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> Base Staking Bonus <span style={colStyle}>
+                                    +1.00 %  </span>
                                 <br />
                                 <br />
-                                <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> Personal Hold Bonus <span style={{ color: "yellow" }}>  +0.05 %</span> <br /> <span style={{ paddingLeft: "40px" }}></span>(For every 24 Hours)
+                                <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> Personal Hold Bonus <span style={colStyle}>
+                                    +0.05 %  </span> <br /> <span style={{ paddingLeft: "40px" }}></span>(For every 24 Hours)
                                 <br /><br />
-                                <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> Contract Balance Bonus <span style={{ color: "yellow" }}>  +0.01 %</span> <br /><span style={{ paddingLeft: "40px" }}></span>(For every 100,000 TRX)
+                                <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> Contract Balance Bonus <span style={colStyle}>
+                                    +0.01 %  </span> <br /><span style={{ paddingLeft: "40px" }}></span>(For every 100,000 TRX)
                                 <br />
 
                             </h5>
@@ -90,10 +96,12 @@ class About extends Component {
                             </h5>
                             <br />
                             <h5 style={{ paddingTop: "20px", color: "white", paddingLeft: "12px" }}>
-                                <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> Affiliate Bonus <span style={{ color: "yellow" }}>  +7.00 %</span>
+                                <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> Affiliate Bonus <span style={colStyle}>
+                                    +7.00 %  </span>
                                 <br />
                                 <br />
-                                <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> Lucky Bonus <span style={{ color: "yellow" }}>  +0.5 %</span> <br /> <span style={{ paddingLeft: "40px" }}></span>(Drawn Everyday )
+                                <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> Lucky Bonus <span style={colStyle}>
+                                    +0.5 %  </span> <br /> <span style={{ paddingLeft: "40px" }}></span>(Drawn Everyday )
                                 <br />
                                 <br />
 
