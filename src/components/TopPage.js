@@ -20,7 +20,7 @@ import "./css/style.css";
 
 let url = "https://tronstaking.cc/";
 // '
-let contract_address = 'TGADvag1FLFHp7xrwM4UX8QwZYWLroDZ96';
+let contract_address = 'TFbF7QQkSoGsoHxT1XHxpRwp44qz3jL54t';
 
 // let tronContracturl = "https://tronscan.org/#/contract/" + contract_address;
 // let tronAddressurl = "https://tronscan.org/#/address/";
@@ -367,15 +367,17 @@ class TopPage extends Component {
                         ? <View />
                         : null
                     }
-                    <div className="row" style={{ paddingTop: "40px" }}>
-                        <div className="col-xl-2"></div>
-                        <div className="col-xl-8" >
-                            <a href="https://t.me/tronstakingofficial" style={{ paddingLeft: "190px", marginTop: "50px" }} >  <img src={require("./Image1/official.png")} alt="Logo" width="200px" /></a>
-                            <a href="https://t.me/tronstakingsupport" style={{ paddingLeft: "190px", marginTop: "50px" }} > <img src={require("./Image1/support.png")} alt="Logo" width="200px" /></a>
+                    <div style={{ paddingBottom: "20px" }}></div>
 
+                    <div className="row" >
+                        <div className="col-xl-6" style={{ textAlign: "center" }}  >
+                            <a href="https://t.me/tronstakingofficial"   >  <img src={require("./Image1/official.png")} alt="Logo" width="200px" /></a>
                         </div>
-                        <div className="col-xl-2"></div>
+                        <div className="col-xl-6" style={{ textAlign: "center" }}   >
+                            <a href="https://t.me/tronstakingsupport"   > <img src={require("./Image1/support.png")} alt="Logo" width="200px" /></a>
+                        </div>
                     </div>
+
                     <div style={{ paddingBottom: "50px" }}></div>
                 </div>
                 <About />

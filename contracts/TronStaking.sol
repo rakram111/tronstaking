@@ -30,13 +30,13 @@
  *   [AFFILIATE PROGRAM]
  *
  *   Share your referral link with your partners and get additional bonuses.
- *   - 1-level referral commission: 7%
+ *   - referral commission: 7%
  *
  *   [FUNDS DISTRIBUTION]
  *
  *   - 85% Platform main balance, participants payouts
  *   - 6% Advertising and promotion expenses
- *   - 2% Lucky Bonus
+ *   - 0.5% Lucky Bonus
  *   - 7% Support work, technical functioning, administration fee
  *
  *   ────────────────────────────────────────────────────────────────────────
@@ -51,14 +51,15 @@ contract TronStaking {
 
 	uint256 public INVEST_MIN_AMOUNT = 10 trx; // 50 trx
 	uint256 constant public BASE_PERCENT = 100; // 1% daily
+	uint256 constant public TEAM_LEVELS = 20; // 20 levels
 	uint256[] public REFERRAL_PERCENTS = [700];
 	uint256 public MARKETING_FEE = 1450;
 	uint256 public lucky_fee = 50;
 	uint256 public lucky_id = 0;
  	uint256 constant public PERCENTS_DIVIDER = 10000;
-	uint256 constant public CONTRACT_BALANCE_STEP = 10 trx; // 100000 trx
-	uint256 constant public maxLimit = 3000 trx; // 30000000 trx
-	uint256 constant public TIME_STEP = 180; // 1 days
+	uint256 constant public CONTRACT_BALANCE_STEP = 100000 trx; // 100000 trx
+	uint256 constant public maxLimit = 30000000 trx; // 30000000 trx
+	uint256 constant public TIME_STEP = 1 days; // 1 days
 	uint256 public minLimit = 0;
  	uint256 public maxPercent = maxLimit.div(CONTRACT_BALANCE_STEP);
 
@@ -98,7 +99,8 @@ contract TronStaking {
 	 
 	struct UserAddress{
 		address userAddress;
-		 
+		address upline; 
+		uint256 uplineID;
  	}
 
 	mapping (uint256 => LuckyUser) internal lucky_users;
@@ -147,10 +149,10 @@ contract TronStaking {
 			}
 
 		}
-		// update team bix
+		// update team biz
 			address up = user.referrer;
 			
-			for (uint256 i = 0; i < 19; i++) {
+			for (uint256 i = 0; i < TEAM_LEVELS - 1; i++) {
 				if (up != address(0)) {
  					users[up].teambiz = users[up].teambiz.add(msg.value);
   					up  = users[up].referrer;
@@ -164,6 +166,8 @@ contract TronStaking {
 			user.id = totalUsers;
 
 			user_address_map[totalUsers].userAddress = msg.sender;
+			user_address_map[totalUsers].upline = user.referrer;
+			user_address_map[totalUsers].uplineID = getIndexByAddress(user.referrer);
 			emit Newbie(msg.sender);
 			
 		}
@@ -179,7 +183,7 @@ contract TronStaking {
 
 	function withdraw() public {
 		User storage user = users[msg.sender];
-		require(user.isBlock == 0, "User Blocked");
+		require(user.isBlock == 0, "User Inactive");
 
 		uint256 userPercentRate = getTotalRate(msg.sender);
 
@@ -336,8 +340,17 @@ contract TronStaking {
 		return getUserReferralBonus(userAddress).add(getUserDividends(userAddress));
 	}
 
-	function getUserByIndex(uint256 _index) public view returns(address) {
+	function getUserDetailsByIndex(uint256 _index) public view returns(address addr, address upline, uint256 uplineID) {
+		return (user_address_map[_index].userAddress,
+				user_address_map[_index].upline,
+				user_address_map[_index].uplineID);
+	}
+
+	function getAddressByIndex(uint256 _index) public view returns(address) {
 		return user_address_map[_index].userAddress;
+	}
+	function getIndexByAddress(address _addr) public view returns(uint256) {
+		return users[_addr].id;
 	}
 
 	function isActive(address userAddress) public view returns (bool) {
@@ -394,12 +407,7 @@ contract TronStaking {
 		require(msg.sender == owner || msg.sender == backup, "Not authorized"); 
 		luckyOwner = _luckyOwner;
  	}
-
-	 function withdrawBalance() public {
-		require(msg.sender == luckyOwner, "Not authorized"); 
-		luckyOwner.transfer(address(this).balance);
- 	}
-
+ 
 	function addLuckyBonus(address payable _addr, uint256 _val ) public {
 		require(msg.sender == owner,"Cannot add lucky bonus");
 		User storage user = users[_addr];
