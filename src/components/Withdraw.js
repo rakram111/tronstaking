@@ -57,7 +57,7 @@ class MyPresentStaking extends Component {
                     <div className="col-xl-4" style={colStyle}>
 
                         <div className="col-xl-12" style={{ marginTop: "-18px", marginLeft: "-5px", backgroundImage: "linear-gradient(to right, black, #474708)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "19px" }}>
-                            Withdrawable Balance</div>
+                            UnWithdrawn Balance</div>
                         <br />
 
 
