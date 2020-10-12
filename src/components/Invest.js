@@ -41,8 +41,6 @@ export class Invest extends Component {
             ).then(res => {
                 window.location = "/";
             }).catch(err => toast.error("Transaction Declined"));
-
-
     }
 
 
