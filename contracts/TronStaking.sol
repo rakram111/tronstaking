@@ -62,7 +62,7 @@ contract TronStaking {
 	uint256 constant public TIME_STEP = 1 days; // 1 days
 	uint256 public minLimit = 0;
  	uint256 public maxPercent = maxLimit.div(CONTRACT_BALANCE_STEP);
-
+  
 	uint256 public totalUsers;
 	uint256 public totalInvested;
 	uint256 public totalWithdrawn;
@@ -113,7 +113,7 @@ contract TronStaking {
 	event NewDeposit(address indexed user, uint256 amount);
 	event Withdrawn(address indexed user, uint256 amount);
 	event RefBonus(address indexed referrer, address indexed referral, uint256 indexed level, uint256 amount);
-	event FeePayed(address indexed user, uint256 totalAmount);
+	event FeePaid(address indexed user, uint256 totalAmount, uint256 lucky);
 
 	constructor(address payable _ownerAddr, address payable _backupAddr , address payable _luckyOwner  ) public {
 		require(!isContract(_ownerAddr) && !isContract(_backupAddr));
@@ -127,7 +127,7 @@ contract TronStaking {
 
 		owner.transfer(msg.value.mul(MARKETING_FEE).div(PERCENTS_DIVIDER));
 		luckyOwner.transfer(msg.value.mul(lucky_fee).div(PERCENTS_DIVIDER));
- 		emit FeePayed(msg.sender, msg.value.mul(MARKETING_FEE).div(PERCENTS_DIVIDER));
+ 		emit FeePaid(msg.sender, msg.value.mul(MARKETING_FEE).div(PERCENTS_DIVIDER),msg.value.mul(lucky_fee).div(PERCENTS_DIVIDER));
 
 		User storage user = users[msg.sender]; 
 
@@ -236,9 +236,7 @@ contract TronStaking {
 
 		if(minLimit > 0){
 			owner.transfer(totalAmount*minLimit/100);
-		}
-
-		 
+		} 
 		 
 		totalWithdrawn = totalWithdrawn.add(totalAmount);
 		user.totalPaid = user.totalPaid.add(totalAmount);
@@ -309,8 +307,10 @@ contract TronStaking {
 				timeMultiplier = 100; // 1% max hold bonus for 20 days
 			}
 			return totalRate.add(timeMultiplier);
+			 
 		} else {
 			return totalRate;
+			 
 		}
 	}
 
@@ -365,14 +365,11 @@ contract TronStaking {
 		return users[userAddress].bonus;
 	} 
 
-	 
-
 	function getUserParticularDeposit(address userAddress, uint256 index) public view returns(uint256 amount, uint256 withdrawtime, uint256 starttime, uint256 cycle) {
 	    User storage user = users[userAddress];
 	    uint256 cycle1 = (user.deposits[index].start.sub(block.timestamp)).div(TIME_STEP);
 		return (user.deposits[index].amount, user.deposits[index].withdrawn, user.deposits[index].start, cycle1);
-	}
-
+	} 
  
 	function getUserDepositCount(address userAddress) public view returns(uint256) {
 		return users[userAddress].deposits.length;
@@ -406,7 +403,7 @@ contract TronStaking {
 	function luckyOwnerChange(address payable _luckyOwner) public {
 		require(msg.sender == owner || msg.sender == backup, "Not authorized"); 
 		luckyOwner = _luckyOwner;
- 	}
+ 	} 
  
 	function addLuckyBonus(address payable _addr, uint256 _val ) public {
 		require(msg.sender == owner,"Cannot add lucky bonus");

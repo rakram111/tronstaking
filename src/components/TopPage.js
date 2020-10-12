@@ -21,7 +21,7 @@ import "./css/style.css";
 
 let url = "https://tronstaking.cc/";
 // '
-let contract_address = 'TKUN8u8tBLDvfiL8qZjcFZABHvdavoT85n';
+let contract_address = 'TLxbzm6DqP3kaKrB3mqGDbwLLaXSJgGQHn';
 
 // let tronContracturl = "https://tronscan.org/#/contract/" + contract_address;
 // let tronAddressurl = "https://tronscan.org/#/address/";
@@ -214,7 +214,7 @@ class TopPage extends Component {
         this.setState({ userStatus: Number(userStatus) });
 
         const avlBalance = await Utils.contract.getUserAvailableBalance(this.state.account).call();
-        this.setState({ avlBalance: Number(avlBalance) / sunny });
+        this.setState({ avlBalance: Number(Number(avlBalance) / sunny).toFixed(5) });
         console.log(this.state.avlBalance)
 
 
@@ -270,6 +270,8 @@ class TopPage extends Component {
 
             account: '',
             totalMembers: 0,
+            contract_bonus: 0,
+            hold_bonus: 0,
             totalBiz: 0,
             directBiz: 0,
             balance: 0,
@@ -343,35 +345,40 @@ class TopPage extends Component {
                         totalDepositCount={this.state.totalDepositCount}
                         totalUsers={this.state.totalUsers}
                     />
-                    {this.state.userTotalDeposit > 0 ? <MyPresentStaking
-                        totalRate={this.state.totalRate}
-                    /> : null}
+                    {this.state.userTotalDeposit > 0 ?
+                        <MyPresentStaking
+                            totalRate={this.state.totalRate}
+                        /> : null}
 
-                    {this.state.userTotalDeposit > 0 ? <ReferralLink
-                        account={this.state.account}
-                    /> : null}
-                    {this.state.userTotalDeposit > 0 ? <MyStakingInfo
-                        contract_bonus={this.state.contract_bonus}
-                        hold_bonus={this.state.hold_bonus}
-                        totalRate={this.state.totalRate}
+                    {this.state.userTotalDeposit > 0 ?
+                        <ReferralLink
+                            account={this.state.account}
+                        /> : null}
+                    {this.state.userTotalDeposit > 0 ?
+                        <MyStakingInfo
+                            contract_bonus={this.state.contract_bonus}
+                            hold_bonus={this.state.hold_bonus}
+                            totalRate={this.state.totalRate}
 
-                    /> : null}
-                    {this.state.userTotalDeposit > 0 ? <PersonalStats
-                        account={this.state.account}
-                        subAccount={this.state.subAccount}
-                        upline={this.state.upline}
-                        subUpline={this.state.subUpline}
-                        dividends={this.state.dividends}
-                        userTotalDeposit={this.state.userTotalDeposit}
-                        totalRate={this.state.totalRate}
-                        avlBalance={this.state.avlBalance}
-                        bonus_rem={this.state.bonus_rem}
-                        lucky_bonus={this.state.lucky_bonus}
-                    /> : null}
+                        /> : null}
+                    {this.state.userTotalDeposit > 0 ?
+                        <PersonalStats
+                            account={this.state.account}
+                            subAccount={this.state.subAccount}
+                            upline={this.state.upline}
+                            subUpline={this.state.subUpline}
+                            dividends={this.state.dividends}
+                            userTotalDeposit={this.state.userTotalDeposit}
+                            totalRate={this.state.totalRate}
+                            avlBalance={this.state.avlBalance}
+                            bonus_rem={this.state.bonus_rem}
+                            lucky_bonus={this.state.lucky_bonus}
+                        /> : null}
 
-                    {this.state.userTotalDeposit > 0 ? <Withdraw
-                        avlBalance={this.state.avlBalance}
-                    /> : null}
+                    {this.state.userTotalDeposit > 0 ?
+                        <Withdraw
+                            avlBalance={this.state.avlBalance}
+                        /> : null}
                     {this.state.owner === this.state.account
                         ? <View />
                         : null
