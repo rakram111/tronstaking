@@ -17,45 +17,7 @@ export class SmartInfo extends Component {
 
         }
 
-        this.button100 = this.button100.bind(this);
-        this.button1000 = this.button1000.bind(this);
-        this.button10k = this.button10k.bind(this);
-        this.button50k = this.button50k.bind(this);
-        this.button100k = this.button100k.bind(this);
-        this.button500k = this.button500k.bind(this);
-        this.reset = this.reset.bind(this);
-
     }
-
-    button100(event) {
-        this.setState({ count: this.state.count + 10 });
-    }
-
-    button1000(event) {
-        this.setState({ count: this.state.count + 1000 });
-    }
-
-    button10k(event) {
-        this.setState({ count: this.state.count + 10000 });
-    }
-
-    button50k(event) {
-        this.setState({ count: this.state.count + 50000 });
-    }
-
-    button100k(event) {
-        this.setState({ count: this.state.count + 100000 });
-    }
-
-    button500k(event) {
-        this.setState({ count: this.state.count + 500000 });
-    }
-
-    reset(event) {
-        this.setState({ count: 0 });
-    }
-
-
     render() {
         // const colStyle = {
         //     backgroundImage: "linear-gradient(to right, #474708, black)", opacity: "70%", marginTop: "60px", borderRadius: "20px", border: "3px solid black", marginLeft: "20px", marginRight: "20px",
@@ -74,7 +36,7 @@ export class SmartInfo extends Component {
                     <div className="col-xl-3"></div>
                     <div className="col-xl-6" style={colStyle}>
 
-                        <div className="col-xl-6" style={{ marginTop: "-18px", backgroundImage: "linear-gradient(to right, black, #474708)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "19px" }}>
+                        <div className="col-xl-6" style={{ marginTop: "-18px", backgroundImage: "linear-gradient(to right, black, #474708)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "16px" }}>
                             Smart Contract</div>
 
                         <br />

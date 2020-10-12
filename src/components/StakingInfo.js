@@ -1,20 +1,7 @@
 import React, { Component } from 'react'
 
-// const contract_address = 'TLxbzm6DqP3kaKrB3mqGDbwLLaXSJgGQHn';
 
-// let contracturl = "https://tronscan.org/#/contract/" + contract_address;
-
-export class SmartInfo extends Component {
-
-    constructor(props) {
-        super(props)
-
-        this.state = {
-            count: 0,
-
-        }
-
-    }
+class SmartInfo extends Component {
 
     render() {
 
@@ -31,7 +18,7 @@ export class SmartInfo extends Component {
                     <div className="col-xl-3"></div>
                     <div className="col-xl-6" style={colStyle}>
 
-                        <div className="col-xl-6" style={{ marginTop: "-18px", backgroundImage: "linear-gradient(to right, black, #474708)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "19px" }}>
+                        <div className="col-xl-6" style={{ marginTop: "-18px", backgroundImage: "linear-gradient(to right, black, #474708)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "16px" }}>
                             Current Staking Stats</div>
 
                         <br />
@@ -45,7 +32,6 @@ export class SmartInfo extends Component {
                             <p style={{ color: "white", fontSize: "17px", float: "right" }}>
                                 +{this.props.contract_bonus} %</p>
                             <br /><br />
-
                         </div>
                     </div>
                     <div className="col-xl-3"></div>

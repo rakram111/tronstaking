@@ -387,17 +387,17 @@ class TopPage extends Component {
                     <div style={{ paddingBottom: "20px" }}></div>
 
                     <div className="row" >
-                        <div className="col-xl-6" style={{ textAlign: "center" }}  >
+                        <div className="col-xl-6" style={{ textAlign: "center", paddingTop: "20px" }}  >
                             <a href="https://t.me/tronstakingofficial"   >  <img src={require("./Image1/official.png")} alt="Logo" width="200px" /></a>
                         </div>
-                        <div className="col-xl-6" style={{ textAlign: "center" }}   >
+                        <div className="col-xl-6" style={{ textAlign: "center", paddingTop: "20px" }}   >
                             <a href="https://t.me/tronstakingsupport"   > <img src={require("./Image1/support.png")} alt="Logo" width="200px" /></a>
                         </div>
                     </div>
                     <div className="row" >
                         <div className="col-xl-4" style={{ textAlign: "center" }}  >
                         </div>
-                        <div className="col-xl-4" style={{ textAlign: "center", paddingTop: "30px" }}  >
+                        <div className="col-xl-4" style={{ textAlign: "center", paddingTop: "20px" }}  >
                             <a href="https://tronstaking.cc"   >
                                 <img src={require("./Image1/refresh.png")} alt="Logo" width="170px" /></a>
                         </div>
