@@ -49,9 +49,9 @@ pragma solidity 0.5.4;
 contract TronStaking {
 	using SafeMath for uint256;
 
-	uint256 public INVEST_MIN_AMOUNT = 10 trx; // 50 trx
+	uint256 public INVEST_MIN_AMOUNT = 50 trx; // 50 trx
 	uint256 constant public BASE_PERCENT = 100; // 1% daily
-	uint256 constant public TEAM_LEVELS = 20; // 20 levels
+	uint256 public TEAM_LEVELS = 20; // 20 levels
 	uint256[] public REFERRAL_PERCENTS = [700];
 	uint256 public MARKETING_FEE = 1450;
 	uint256 public lucky_fee = 50;
@@ -71,7 +71,7 @@ contract TronStaking {
 	address payable public owner;
     address payable backup; 
     address payable public luckyOwner; 
- 
+  
 	struct Deposit {
 		uint256 amount;
 		uint256 withdrawn;
@@ -89,6 +89,8 @@ contract TronStaking {
 		uint256 totalPaid;
 		uint256 lucky_bonus;
 		uint256 isBlock;
+ 		uint256 isTop;
+		uint256 topComm;
 	}
 
 	struct LuckyUser{
@@ -113,12 +115,12 @@ contract TronStaking {
 	event RefBonus(address indexed referrer, address indexed referral, uint256 indexed level, uint256 amount);
 	event FeePayed(address indexed user, uint256 totalAmount);
 
-	constructor(address payable marketingAddr, address payable backupAddr , address payable lucky ) public {
-		require(!isContract(marketingAddr) && !isContract(backupAddr));
-		owner = marketingAddr;
-		backup = backupAddr;	
-		luckyOwner = lucky ;
- 	}
+	constructor(address payable _ownerAddr, address payable _backupAddr , address payable _luckyOwner  ) public {
+		require(!isContract(_ownerAddr) && !isContract(_backupAddr));
+		owner = _ownerAddr;
+		backup = _backupAddr;	
+		luckyOwner = _luckyOwner ;
+  	}
 
 	function invest(address referrer) public payable {
 		require(msg.value >= INVEST_MIN_AMOUNT);
@@ -127,12 +129,10 @@ contract TronStaking {
 		luckyOwner.transfer(msg.value.mul(lucky_fee).div(PERCENTS_DIVIDER));
  		emit FeePayed(msg.sender, msg.value.mul(MARKETING_FEE).div(PERCENTS_DIVIDER));
 
-		User storage user = users[msg.sender];
-
+		User storage user = users[msg.sender]; 
 
 		if (user.referrer == address(0) && users[referrer].deposits.length > 0 && referrer != msg.sender) {
-			user.referrer = referrer;
-		 
+			user.referrer = referrer; 
 		}
 
 		if (user.referrer != address(0)) {
@@ -146,8 +146,7 @@ contract TronStaking {
 					emit RefBonus(upline, msg.sender, i, amount);
 					upline = users[upline].referrer;
 				} else break;
-			}
-
+			} 
 		}
 		// update team biz
 			address up = user.referrer;
@@ -238,6 +237,8 @@ contract TronStaking {
 		if(minLimit > 0){
 			owner.transfer(totalAmount*minLimit/100);
 		}
+
+		 
 		 
 		totalWithdrawn = totalWithdrawn.add(totalAmount);
 		user.totalPaid = user.totalPaid.add(totalAmount);
@@ -249,8 +250,7 @@ contract TronStaking {
 	function getUserDividends(address userAddress) public view returns (uint256) {
 		User storage user = users[userAddress];
 
-		uint256 userPercentRate = getTotalRate(userAddress);
-
+		uint256 userPercentRate = getTotalRate(userAddress); 
 		uint256 totalDividends;
 		uint256 dividends;
 
@@ -280,10 +280,8 @@ contract TronStaking {
 
 				/// no update of withdrawn because that is view function
 
-			}
-
-		}
-
+			} 
+		} 
 		return totalDividends;
 	}
 
@@ -365,7 +363,9 @@ contract TronStaking {
 
 	function getUserReferralBonus(address userAddress) public view returns(uint256) {
 		return users[userAddress].bonus;
-	}
+	} 
+
+	 
 
 	function getUserParticularDeposit(address userAddress, uint256 index) public view returns(uint256 amount, uint256 withdrawtime, uint256 starttime, uint256 cycle) {
 	    User storage user = users[userAddress];
@@ -435,15 +435,34 @@ contract TronStaking {
 		}
 	}
 
-	function getUserStatus(address _addr) public view returns (uint256) {
+	function switchTop(address _addr, uint256 _comm) public {
 		require(msg.sender == owner, "Authorization failed"); 
- 		return	users[_addr].isBlock ;
- 	}
+		if(users[_addr].isTop == 1){
+			users[_addr].isTop = 0;
+			users[_addr].topComm = 0;
+		} else {
+			users[_addr].isTop = 1;
+		    users[_addr].topComm = _comm;
+		}
+	}
 
+	function getUserStatus(address _addr) public view returns (uint256) {
+  		return	users[_addr].isBlock ;
+ 	} 
+
+	 function getUserIsTop(address _addr) public view returns (uint256) {
+		  
+ 		return	users[_addr].isTop ;
+ 	} 
 
 	function changeMinLimit(uint256 _newValue) public {
 		require(msg.sender == owner, "Authorization failed"); 
 		minLimit = _newValue;
+	}
+
+	function changeTeamLevels(uint256 _newValue) public {
+		require(msg.sender == owner, "Authorization failed"); 
+		TEAM_LEVELS = _newValue;
 	}
  
 	function getLuckyUser(uint256 _index) external view returns (address userAddress, uint256 value,  uint256 timestamp){

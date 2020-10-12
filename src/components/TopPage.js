@@ -21,7 +21,7 @@ import "./css/style.css";
 
 let url = "https://tronstaking.cc/";
 // '
-let contract_address = 'TFbF7QQkSoGsoHxT1XHxpRwp44qz3jL54t';
+let contract_address = 'TKUN8u8tBLDvfiL8qZjcFZABHvdavoT85n';
 
 // let tronContracturl = "https://tronscan.org/#/contract/" + contract_address;
 // let tronAddressurl = "https://tronscan.org/#/address/";
@@ -207,7 +207,6 @@ class TopPage extends Component {
         }
         //    const contract_bonus = Number(contract_bonus1 / 100).toFixed(2);
         this.setState({ contract_bonus: Number(contract_bonus).toFixed(2) });
-
         const userTotalDeposit = await Utils.contract.getUserTotalDeposits(this.state.account).call();
         this.setState({ userTotalDeposit: Number(userTotalDeposit) / sunny });
 
@@ -216,17 +215,27 @@ class TopPage extends Component {
 
         const avlBalance = await Utils.contract.getUserAvailableBalance(this.state.account).call();
         this.setState({ avlBalance: Number(avlBalance) / sunny });
+        console.log(this.state.avlBalance)
+
 
         const dividends = await Utils.contract.getUserDividends(this.state.account).call();
         this.setState({ dividends: Number(dividends) / sunny });
 
         const totalRate = await Utils.contract.getTotalRate(this.state.account).call();
         this.setState({ totalRate: (Number(totalRate) / 100).toFixed(2) });
-
-        var hold_bonus = Number(this.state.totalRate - 1 - this.state.contract_bonus).toFixed(2);
-
+        console.log('hekeko');
+        var hold_bonus = 1;
         this.setState({ hold_bonus });
+        console.log('cehck ' + this.state.hold_bonus);
 
+        hold_bonus = this.state.totalRate - 1 - this.state.contract_bonus;
+
+        const num1 = 1;
+        if (hold_bonus >= 1) {
+            hold_bonus = Number(num1).toFixed(2);
+        }
+        this.setState({ hold_bonus });
+        console.log('cehck 1' + this.state.hold_bonus);
 
         const userDepositCount = await Utils.contract.getUserDepositCount(this.state.account).call();
         this.setState({ userDepositCount: Number(userDepositCount) });

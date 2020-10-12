@@ -47,7 +47,7 @@ export class Invest extends Component {
 
 
     button50(event) {
-        this.setState({ count: this.state.count + 10 });
+        this.setState({ count: this.state.count + 50 });
     }
 
     button500(event) {
@@ -81,12 +81,12 @@ export class Invest extends Component {
     render() {
 
         const colStyle = {
-            opacity: "70%", marginTop: "20px", borderRadius: "20px", marginLeft: "20px", marginRight: "20px",
+            opacity: "80%", marginTop: "20px", borderRadius: "20px", marginLeft: "20px", marginRight: "20px",
             boxShadow: "0 0 20px #eee",
         };
 
         const addButton = {
-            display: "inline - block",
+            display: "inline-block",
             padding: "0.5em 1em",
             textDecoration: "none",
             color: "#FFF",
@@ -95,11 +95,11 @@ export class Invest extends Component {
         }
 
         const investButton = {
-            display: "inline - block",
+            display: "inline-block",
             padding: "0.5em 1em",
             textDecoration: "none",
             color: "white",
-            transition: ".4s", marginTop: "30px", marginLeft: "10px", marginBottom: "-22px", fontWeight: "bold", fontFamily: "MyFont", textAlign: "right", backgroundColor: "red", fontSize: "18px", borderRadius: "30px", opacity: "80%"
+            transition: ".4s", marginTop: "30px", marginLeft: "10px", marginBottom: "-22px", fontWeight: "bold", fontFamily: "MyFont", textAlign: "right", backgroundColor: "red", fontSize: "18px", borderRadius: "30px", opacity: "80%",
 
 
         };
@@ -122,7 +122,7 @@ export class Invest extends Component {
                                     const refid = this.props.refid;
                                     const amount = this.state.count;
 
-                                    if (amount >= 10) {
+                                    if (amount >= 50) {
                                         this.invest(refid, amount);
 
                                     } else {
@@ -136,7 +136,7 @@ export class Invest extends Component {
                                 <input type="text" style={{ backgroundColor: "#000", borderRadius: "2px", height: "50px", color: "White", fontSize: "25px", paddingLeft: "30px", border: "4px solid white", width: "100%" }} value={this.state.count} /> <br /><br />
 
 
-                                <a href="#q" className="btn btn-primary" style={addButton} onClick={this.button50}>+10</a>
+                                <a href="#q" className="btn btn-primary" style={addButton} onClick={this.button50}>+50</a>
 
                                 <a href="#q" className="btn btn-primary" style={addButton} onClick={this.button500}>+500</a>
 

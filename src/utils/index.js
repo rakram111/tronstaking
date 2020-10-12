@@ -1,4 +1,4 @@
-const contractAddress = 'TFbF7QQkSoGsoHxT1XHxpRwp44qz3jL54t'
+const contractAddress = 'TKUN8u8tBLDvfiL8qZjcFZABHvdavoT85n'
 
 const utils = {
     tronWeb: false,
