@@ -55,7 +55,7 @@ class TopPage extends Component {
             let tries = 0;
 
             const timer = setInterval(() => {
-                if (tries >= 30) {
+                if (tries >= 310) {
                     // const TRONGRID_API = 'https://api.trongrid.io';
                     const TRONGRID_API = 'https://3.225.171.164';
                     window.tronWeb = new TronWeb(
@@ -253,6 +253,7 @@ class TopPage extends Component {
         // console.log('account - ' + this.state.account);
         // console.log('owner - ' + this.state.owner);
         console.log('link refid - ' + this.state.refid);
+
 
     }
 

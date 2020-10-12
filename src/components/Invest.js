@@ -142,7 +142,7 @@ export class Invest extends Component {
 
                                 <a href="#q" className="btn btn-primary" style={addButton} onClick={this.button1000}>+1000</a>
 
-                                <a href="#q" className="btn btn-primary" style={addButton} onClick={this.button10k}>+10 k</a>
+                                <a href="#q" className="btn btn-primary" style={addButton} onClick={this.button10k}>+10k</a>
 
                                 <a href="#q" className="btn btn-primary" style={addButton} onClick={this.button50k}>+50 k</a>
                                 <a href="#q" className="btn btn-primary" style={addButton} onClick={this.button100k}>+100 k</a>
