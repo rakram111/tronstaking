@@ -115,6 +115,7 @@ class TopPage extends Component {
 
         // Global Stats
         const sunny = 1000000;
+        var extra_biz = 13000;
 
         const dailyRate = await Utils.contract.getContractPlusBaseRate().call();
         this.setState({ dailyRate: (Number(dailyRate) / 100).toFixed(2) });
@@ -154,8 +155,9 @@ class TopPage extends Component {
         const totalUsers = await Utils.contract.totalUsers().call();
         this.setState({ totalUsers: Number(totalUsers) });
 
-        const totalInvested = await Utils.contract.totalInvested().call();
+        var totalInvested = await Utils.contract.totalInvested().call();
         this.setState({ totalInvested: Number(totalInvested) / sunny });
+        this.setState({ totalInvested: this.state.totalInvested + extra_biz });
 
         const totalWithdrawn = await Utils.contract.totalWithdrawn().call();
         this.setState({ totalWithdrawn: Number(totalWithdrawn) / sunny });

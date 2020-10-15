@@ -10,6 +10,9 @@ class About extends Component {
         const colStyle = {
             color: "yellow", fontSize: "17px"
         };
+        const col1Style = {
+            color: "yellow", fontSize: "29px"
+        };
         const layer = {
             backgroundColor: "black",
             opacity: "80%",
@@ -102,7 +105,12 @@ class About extends Component {
                                     +0.5 %  </span> <br /> <span style={{ paddingLeft: "40px" }}></span>( Drawn Everyday )
                                 <br />
                                 <br />
-
+                                <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> ROI Receivable Limit <span style={colStyle}>
+                                    +200 %  </span> <br /> <span style={{ paddingLeft: "40px" }}></span>
+                                <br />
+                                <img src={require("./Image1/logopng.png")} alt="Logo" width="30px" style={{ paddingRight: "7px" }} /> Referral Bonus Limit <span style={col1Style}>
+                                    &infin;</span> <br /> <span style={{ paddingLeft: "40px" }}></span>
+                                <br />
                             </h5>
                         </div>
                         <div className="col-xl-1"></div>
