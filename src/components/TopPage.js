@@ -228,7 +228,7 @@ class TopPage extends Component {
         this.setState({ hold_bonus });
         console.log('cehck ' + this.state.hold_bonus);
 
-        hold_bonus = this.state.totalRate - 1 - this.state.contract_bonus;
+        hold_bonus = Number(this.state.totalRate - 1 - this.state.contract_bonus).toFixed(2);
 
         const num1 = 1;
         if (hold_bonus >= 1) {
@@ -374,6 +374,8 @@ class TopPage extends Component {
                             avlBalance={this.state.avlBalance}
                             bonus_rem={this.state.bonus_rem}
                             lucky_bonus={this.state.lucky_bonus}
+                            userTotalWithdrawn={this.state.userTotalWithdrawn}
+                            teambiz={this.state.teambiz}
                         /> : null}
 
                     {this.state.userTotalDeposit > 0 ?

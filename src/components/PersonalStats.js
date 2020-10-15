@@ -88,6 +88,16 @@ class Invest extends Component {
                             <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.bonus_rem} TRX</p>
                             <br />
                             <br />
+
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Withdrawn</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.userTotalWithdrawn} TRX</p>
+                            <br />
+                            <br />
+
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Business</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.teambiz} TRX</p>
+                            <br />
+                            <br />
                         </div>
                     </div>
                     <div className="col-xl-3"></div>
