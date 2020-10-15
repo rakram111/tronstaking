@@ -6,7 +6,7 @@ import Utils from '../utils';
 import PersonalStats2 from "./PersonalStats2";
 import MyPresentStaking from "./MyPresentStaking";
 import MyStakingInfo from "./MyStakingInfo";
-import Organization2 from "./Organization2";
+import TeamBiz from "./TeamBiz";
 
 import 'react-toastify/dist/ReactToastify.css';
 import "./css/style.css";
@@ -123,10 +123,12 @@ class TopPage2 extends Component {
 
         this.setState({ refLoading: false });
 
+
         const accTemp = await Utils.tronWeb.defaultAddress.base58;
         this.setState({ account: accTemp });
         // this.setState({ account: this.state.refid });
         this.setState({ walletload: false });
+
 
         const balTemp = await Utils.tronWeb.trx.getBalance(accTemp);
         const ballTemp = balTemp / sunny;
@@ -159,8 +161,9 @@ class TopPage2 extends Component {
         // console.log('sub contract ' + this.state.subContract)
         // console.log(' contract ' + contractStr)
         // // console.log('show acc str ' + showacc);
-
-
+        const isTop = await Utils.contract.getUserIsTop(this.state.account).call();
+        this.setState({ isTop: Number(isTop) });
+        // console.log('is top ' + isTop);
         /////////////////////////////////////////////////////////////////////////////
         const userInfo = await Utils.contract.userInfo(this.state.account).call();
         // console.log(userInfo);
@@ -187,30 +190,47 @@ class TopPage2 extends Component {
 
         // console.log(hold_bonus)
 
-        const contract_bonus = Math.floor((this.state.contractBalance / this.state.contract_step)) / 100;
+        var contract_bonus = (Math.floor((this.state.contractBalance / this.state.contract_step)) / 100).toFixed(2);
+        if (contract_bonus >= 3) {
+            contract_bonus = 3;
+        }
         //    const contract_bonus = Number(contract_bonus1 / 100).toFixed(2);
-        this.setState({ contract_bonus });
-
+        this.setState({ contract_bonus: Number(contract_bonus).toFixed(2) });
         const userTotalDeposit = await Utils.contract.getUserTotalDeposits(this.state.account).call();
         this.setState({ userTotalDeposit: Number(userTotalDeposit) / sunny });
 
+        const userStatus = await Utils.contract.getUserStatus(this.state.account).call();
+        this.setState({ userStatus: Number(userStatus) });
+
         const avlBalance = await Utils.contract.getUserAvailableBalance(this.state.account).call();
-        this.setState({ avlBalance: Number(avlBalance) / sunny });
+        this.setState({ avlBalance: Number(Number(avlBalance) / sunny).toFixed(5) });
+        console.log(this.state.avlBalance)
+
 
         const dividends = await Utils.contract.getUserDividends(this.state.account).call();
         this.setState({ dividends: Number(dividends) / sunny });
 
         const totalRate = await Utils.contract.getTotalRate(this.state.account).call();
         this.setState({ totalRate: (Number(totalRate) / 100).toFixed(2) });
-
-        const hold_bonus = Number(this.state.totalRate - 1 - this.state.contract_bonus).toFixed(2);
+        console.log('hekeko');
+        var hold_bonus = 1;
         this.setState({ hold_bonus });
+        console.log('cehck ' + this.state.hold_bonus);
+
+        hold_bonus = Number(this.state.totalRate - 1 - this.state.contract_bonus).toFixed(2);
+
+        const num1 = 1;
+        if (hold_bonus >= 1) {
+            hold_bonus = Number(num1).toFixed(2);
+        }
+        this.setState({ hold_bonus });
+        console.log('cehck 1' + this.state.hold_bonus);
 
         const userDepositCount = await Utils.contract.getUserDepositCount(this.state.account).call();
         this.setState({ userDepositCount: Number(userDepositCount) });
-
+        console.log('user deposit ' + this.state.userDepositCount)
         const userTotalWithdrawn = await Utils.contract.getUserTotalWithdrawn(this.state.account).call();
-        this.setState({ userTotalWithdrawn: Number(userTotalWithdrawn) / sunny });
+        this.setState({ userTotalWithdrawn: Number(Number(userTotalWithdrawn) / sunny).toFixed(2) });
         const lucky_bonus = await Utils.contract.getUserLuckyBonus(this.state.account).call();
         this.setState({ lucky_bonus: Number(lucky_bonus) / sunny });
 
@@ -218,23 +238,14 @@ class TopPage2 extends Component {
         const dividends_withdrawn = Number(this.state.userTotalWithdrawn + this.state.bonus_rem
             - this.state.ref_bonus).toFixed(5);
         this.setState({ dividends_withdrawn });
-        // console.log('contract - ' + this.state.upline);
+        console.log('contract - ' + this.state.upline);
         // console.log('account - ' + this.state.account);
         // console.log('owner - ' + this.state.owner);
-        // console.log('link refid - ' + this.state.refid);
+        console.log('link refid - ' + this.state.refid);
+
 
     }
 
-    withdraw(amount) {
-        return Utils.contract
-            .withdraw()
-            .send({
-                from: this.state.account,
-            }).then(res => toast.success('Withdrawal processing', { position: toast.POSITION.TOP_RIGHT, autoClose: 10000 }
-            )).then(res => {
-                window.location = "/";
-            });
-    }
 
     constructor(props) {
         super(props)
@@ -267,8 +278,6 @@ class TopPage2 extends Component {
             },
         }
 
-        this.withdraw = this.withdraw.bind(this);
-
     }
 
     render() {
@@ -293,13 +302,9 @@ class TopPage2 extends Component {
                         <div className="col-md-4">
                         </div>
                     </div>
-                    <MyPresentStaking
-                        totalRate={this.state.totalRate}
-                    />
-                    <MyStakingInfo
-                        contract_bonus={this.state.contract_bonus}
-                        hold_bonus={this.state.hold_bonus}
-                        totalRate={this.state.totalRate}
+
+                    <TeamBiz
+                        teambiz={this.state.teambiz}
                     />
                     <PersonalStats2
                         account={this.state.account}
@@ -311,20 +316,13 @@ class TopPage2 extends Component {
                         totalRate={this.state.totalRate}
                         avlBalance={this.state.avlBalance}
                         bonus_rem={this.state.bonus_rem}
+                        lucky_bonus={this.state.lucky_bonus}
+                        userTotalWithdrawn={this.state.userTotalWithdrawn}
+                        teambiz={this.state.teambiz}
+                        isTop={this.state.isTop}
                     />
 
-                    <Organization2
-                        account={this.state.account}
-                        lucky_bonus={this.state.lucky_bonus}
-                        dividends_withdrawn={this.state.dividends_withdrawn}
-                        dividends={this.state.dividends}
-                        userTotalDeposit={this.state.userTotalDeposit}
-                        userTotalWithdrawn={this.state.userTotalWithdrawn}
-                        avlBalance={this.state.avlBalance}
-                        ref_bonus={this.state.ref_bonus}
-                        teambiz={this.state.teambiz}
-                        id={this.state.id}
-                    />
+
                     <div style={{ paddingBottom: "30px" }}></div>
                 </div>
             </div >

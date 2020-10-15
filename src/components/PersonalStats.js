@@ -8,7 +8,7 @@ let addressTronScan = "https://tronscan.org/#/contract/";
 
 toast.configure();
 
-class Invest extends Component {
+class PersonalStats extends Component {
 
     constructor(props) {
         super(props)
@@ -80,24 +80,19 @@ class Invest extends Component {
 
 
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Dividends Unwithdrawn</p>
-                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.dividends} TRX</p>
-                            <br /><br />
-
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Referral Bonus Unwithdrawn</p>
-                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.bonus_rem} TRX</p>
-                            <br />
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}>Dividends Unwithdrawn</p>
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}> {this.props.dividends} TRX</p>
                             <br />
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Withdrawn</p>
-                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.userTotalWithdrawn} TRX</p>
-                            <br />
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}>Referral Bonus Unwithdrawn</p>
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}> {this.props.bonus_rem} TRX</p>
                             <br />
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Business</p>
-                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.teambiz} TRX</p>
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}>Total Withdrawn</p>
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}> {this.props.userTotalWithdrawn} TRX</p>
                             <br />
-                            <br />
+
+
                         </div>
                     </div>
                     <div className="col-xl-3"></div>
@@ -109,4 +104,4 @@ class Invest extends Component {
     }
 }
 
-export default Invest
+export default PersonalStats

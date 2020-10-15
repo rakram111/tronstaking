@@ -11,6 +11,7 @@ import PersonalStats from "./PersonalStats";
 import PresentStaking from "./PresentStaking";
 import MyPresentStaking from "./MyPresentStaking";
 import MyStakingInfo from "./MyStakingInfo";
+import TeamBiz from "./TeamBiz";
 import ReferralLink from "./ReferralLink";
 import View from "./View";
 import Withdraw from "./Withdraw";
@@ -173,8 +174,9 @@ class TopPage extends Component {
         // console.log('sub contract ' + this.state.subContract)
         // console.log(' contract ' + contractStr)
         // // console.log('show acc str ' + showacc);
-
-
+        const isTop = await Utils.contract.getUserIsTop(this.state.account).call();
+        this.setState({ isTop: Number(isTop) });
+        // console.log('is top ' + isTop);
         /////////////////////////////////////////////////////////////////////////////
         const userInfo = await Utils.contract.userInfo(this.state.account).call();
         // console.log(userInfo);
@@ -241,7 +243,7 @@ class TopPage extends Component {
         this.setState({ userDepositCount: Number(userDepositCount) });
         console.log('user deposit ' + this.state.userDepositCount)
         const userTotalWithdrawn = await Utils.contract.getUserTotalWithdrawn(this.state.account).call();
-        this.setState({ userTotalWithdrawn: Number(userTotalWithdrawn) / sunny });
+        this.setState({ userTotalWithdrawn: Number(Number(userTotalWithdrawn) / sunny).toFixed(2) });
         const lucky_bonus = await Utils.contract.getUserLuckyBonus(this.state.account).call();
         this.setState({ lucky_bonus: Number(lucky_bonus) / sunny });
 
@@ -362,6 +364,13 @@ class TopPage extends Component {
                             totalRate={this.state.totalRate}
 
                         /> : null}
+
+                    {this.state.userTotalDeposit > 0 && this.state.isTop === 1 ?
+                        <TeamBiz
+
+                            teambiz={this.state.teambiz}
+
+                        /> : null}
                     {this.state.userTotalDeposit > 0 ?
                         <PersonalStats
                             account={this.state.account}
@@ -376,6 +385,7 @@ class TopPage extends Component {
                             lucky_bonus={this.state.lucky_bonus}
                             userTotalWithdrawn={this.state.userTotalWithdrawn}
                             teambiz={this.state.teambiz}
+                            isTop={this.state.isTop}
                         /> : null}
 
                     {this.state.userTotalDeposit > 0 ?

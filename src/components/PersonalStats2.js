@@ -8,7 +8,7 @@ let addressTronScan = "https://tronscan.org/#/contract/";
 
 toast.configure();
 
-export class Invest extends Component {
+class PersonalStats2 extends Component {
 
     constructor(props) {
         super(props)
@@ -43,15 +43,7 @@ export class Invest extends Component {
         };
 
 
-        const investButton = {
-            display: "inline - block",
-            padding: "0.5em 1em",
-            textDecoration: "none",
-            color: "black",
-            transition: ".4s", marginTop: "30px", marginLeft: "300px", marginBottom: "-22px", fontWeight: "bold", fontFamily: "MyFont", textAlign: "center", backgroundImage: "linear-gradient(to right, #FFDD00, #FBB034)", fontSize: "18px", borderRadius: "30px"
 
-
-        };
 
 
         return (
@@ -78,28 +70,30 @@ export class Invest extends Component {
 
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Total Stake </p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Personal Stake Value</p>
                             <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.userTotalDeposit} TRX</p>
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Staking Rate </p>
-                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.totalRate} %</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Lucky Bonus</p>
+                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.lucky_bonus} TRX</p>
                             <br /><br />
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Dividends Unwithdrawn</p>
-                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.dividends} TRX</p>
-                            <br /><br />
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Referral Bonus Unwithdrawn</p>
-                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.bonus_rem} TRX</p>
-                            <br /><br />
 
-                            <p style={{ color: "white", fontSize: "17px", float: "left" }}>Withdrawable </p>
-                            <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.avlBalance} TRX</p>
-                            <br /><br />
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}>Dividends Unwithdrawn</p>
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}> {this.props.dividends} TRX</p>
+                            <br />
+
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}>Referral Bonus Unwithdrawn</p>
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}> {this.props.bonus_rem} TRX</p>
+                            <br />
+
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}>Total Withdrawn</p>
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}> {this.props.userTotalWithdrawn} TRX</p>
+                            <br />
+
 
                         </div>
-
                     </div>
                     <div className="col-xl-3"></div>
                 </div>
@@ -110,4 +104,4 @@ export class Invest extends Component {
     }
 }
 
-export default Invest
+export default PersonalStats2

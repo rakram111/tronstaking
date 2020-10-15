@@ -6,7 +6,7 @@ import 'react-toastify/dist/ReactToastify.css';
 
 toast.configure();
 
-class MyPresentStaking extends Component {
+class Withdraw extends Component {
     constructor(props) {
         super(props)
 
@@ -57,7 +57,7 @@ class MyPresentStaking extends Component {
                     <div className="col-xl-4" style={colStyle}>
 
                         <div className="col-xl-12" style={{ marginTop: "-18px", marginLeft: "-5px", backgroundImage: "linear-gradient(to right, black, #474708)", borderRadius: "5px", color: "white", textAlign: "center", fontWeight: "bold", fontSize: "16px" }}>
-                            UnWithdrawn Balance</div>
+                            Withdrawable Balance</div>
                         <br />
 
 
@@ -90,4 +90,4 @@ class MyPresentStaking extends Component {
     }
 }
 
-export default MyPresentStaking
+export default Withdraw
