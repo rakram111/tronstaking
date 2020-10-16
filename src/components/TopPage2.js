@@ -4,8 +4,6 @@ import back from "./Image1/back.png"
 import TronWeb from 'tronweb';
 import Utils from '../utils';
 import PersonalStats2 from "./PersonalStats2";
-import MyPresentStaking from "./MyPresentStaking";
-import MyStakingInfo from "./MyStakingInfo";
 import TeamBiz from "./TeamBiz";
 
 import 'react-toastify/dist/ReactToastify.css';
@@ -124,15 +122,15 @@ class TopPage2 extends Component {
         this.setState({ refLoading: false });
 
 
-        const accTemp = await Utils.tronWeb.defaultAddress.base58;
-        this.setState({ account: accTemp });
+        // const accTemp = await Utils.tronWeb.defaultAddress.base58;
+        // this.setState({ account1: accTemp });
         // this.setState({ account: this.state.refid });
         this.setState({ walletload: false });
 
 
-        const balTemp = await Utils.tronWeb.trx.getBalance(accTemp);
-        const ballTemp = balTemp / sunny;
-        this.setState({ balance: ballTemp });
+        // const balTemp = await Utils.tronWeb.trx.getBalance(accTemp);
+        // const ballTemp = balTemp / sunny;
+        // this.setState({ balance: ballTemp });
         this.setState({ balanceload: false });
 
         const contractBalance = await Utils.contract.getContractBalance().call();
@@ -316,6 +314,7 @@ class TopPage2 extends Component {
                         totalRate={this.state.totalRate}
                         avlBalance={this.state.avlBalance}
                         bonus_rem={this.state.bonus_rem}
+                        ref_bonus={this.state.ref_bonus}
                         lucky_bonus={this.state.lucky_bonus}
                         userTotalWithdrawn={this.state.userTotalWithdrawn}
                         teambiz={this.state.teambiz}

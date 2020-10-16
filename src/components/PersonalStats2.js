@@ -84,6 +84,11 @@ class PersonalStats2 extends Component {
                             <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}> {this.props.dividends} TRX</p>
                             <br />
 
+
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}>Referral Bonus Earned</p>
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}> {Number(this.props.ref_bonus).toFixed(2)} TRX</p>
+                            <br />
+
                             <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}>Referral Bonus Unwithdrawn</p>
                             <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}> {this.props.bonus_rem} TRX</p>
                             <br />

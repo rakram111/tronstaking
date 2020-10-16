@@ -30,10 +30,7 @@ class PersonalStats extends Component {
             ).then(res => {
                 window.location = "/";
             });
-
-
     }
-
 
     render() {
 
@@ -41,10 +38,6 @@ class PersonalStats extends Component {
             backgroundImage: "linear-gradient(to right, black, #474708)", opacity: "70%", marginTop: "20px", borderRadius: "20px", marginLeft: "20px", marginRight: "20px",
             boxShadow: "0 0 20px #eee",
         };
-
-
-
-
 
         return (
 
@@ -77,6 +70,10 @@ class PersonalStats extends Component {
                             <p style={{ color: "white", fontSize: "17px", float: "left" }}>Lucky Bonus</p>
                             <p style={{ color: "white", fontSize: "17px", float: "right" }}> {this.props.lucky_bonus} TRX</p>
                             <br /><br />
+
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}>Referral Bonus Earned</p>
+                            <p style={{ color: "white", fontSize: "17px", textAlign: "center" }}> {Number(this.props.ref_bonus).toFixed(2)} TRX</p>
+                            <br />
 
 
 
