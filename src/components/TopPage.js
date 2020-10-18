@@ -115,7 +115,7 @@ class TopPage extends Component {
 
         // Global Stats
         const sunny = 1000000;
-        var extra_biz = 14300;
+        var extra_biz = 0;
 
         const dailyRate = await Utils.contract.getContractPlusBaseRate().call();
         this.setState({ dailyRate: (Number(dailyRate) / 100).toFixed(2) });
